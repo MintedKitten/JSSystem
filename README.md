@@ -1,1 +1,2 @@
 # JSSystem
+JavaScript System Namespace
