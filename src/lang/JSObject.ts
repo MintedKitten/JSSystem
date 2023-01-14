@@ -1,4 +1,3 @@
-import { randBetween } from "big-integer";
 import { JSSystem, Random_Serial_BigInt } from "../System";
 import { JSClass } from "./JSClass";
 
@@ -32,6 +31,10 @@ class JSObject {
 
   public getClass(): JSClass {
     return this.#Class_Object;
+  }
+
+  public getHashCode(): bigint {
+    return BigInt(0);
   }
 
   public toString(): string {

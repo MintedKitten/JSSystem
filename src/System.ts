@@ -1,8 +1,5 @@
 import { JSClass } from "./lang/JSClass";
 import { randBetween } from "big-integer";
-import { randomBytes } from "crypto";
-
-const __inner_jsclass_name = "JSClass";
 
 /**
  * JSS System Class. The class that keeps everything in check.
@@ -46,17 +43,19 @@ class System {
     return jsclass;
   }
   /**
-   *Attempt to
-   * @param className {String}
-   * @returns
+   * Attempt to find registered class with the specify name. Because javascript allow duplicate class name, namy registered class object can be return. If the class has not been registered, an error will be thrown.
+   * @throws {Error} Class Not Found
+   * @param className {String} The name of the registered class that you are looking for
+   * @returns The array with the class objects
    */
-  public getClass(className: string): JSClass {
-    const _jsclass = this.#JSClasses.find((jsclass) => {
+  public getClass(className: string): JSClass[] {
+    const _jsclass: JSClass[] = [];
+    this.#JSClasses.map((jsclass) => {
       if (className === jsclass.getName()) {
-        return jsclass;
+        _jsclass.push(jsclass);
       }
     });
-    if (_jsclass) {
+    if (_jsclass.length > 0) {
       return _jsclass;
     } else {
       throw new Error("Class Not Found");

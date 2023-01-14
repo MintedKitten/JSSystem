@@ -1,4 +1,4 @@
-import { JSObject } from "../src";
+import { JSObject, JSSystem } from "../src";
 import { NewClass as NewClassA } from "./NewClass";
 import { NewClass as NewClassB } from "./DupNameClass";
 
@@ -14,9 +14,14 @@ console.log(jsob1.getClass() === newob1.getClass()); // false
 console.log(jsob1.getClass() === jsob1.getClass()); // true
 console.log(jsob1.getClass() === jsob2.getClass()); // true
 console.log(newob1.getClass() === newob2.getClass()); // true
-console.log(newob1.getClass() === newob3.getClass()); // true
+console.log(newob1.getClass() === newob3.getClass()); // false
+
+const JSObjectClass = JSSystem.getClass("JSObject")[0];
+
+console.log(jsob1.getClass() === JSObjectClass);
 
 console.log(jsob1.getClass().getName());
 console.log(newob1.getClass().getName());
 console.log(jsob2.getClass().getName());
 console.log(newob2.getClass().getName());
+console.log(newob2.getClass().getClass().getClass());

@@ -11,7 +11,8 @@
     "bundle": "npm run bundle:esm && npm run bundle:cjs",
     "bundle:esm": "esbuild src/index.ts --bundle --format=esm --outfile=build/index.mjs --platform=node --external:./node_modules/* --target=ESNext --minify --allow-overwrite",
     "bundle:cjs": "esbuild src/index.ts --bundle --outfile=build/index.js --platform=node --external:./node_modules/* --target=ESNext --minify --allow-overwrite",
-    "declaration": "npx tsc src/index.ts --declaration --emitDeclarationOnly --esModuleInterop --allowSyntheticDefaultImports --outDir build"
+    "declaration": "npx tsc --project tsconfig.json",
+    "ts-node:fallback": "esbuild test/test.ts --bundle --outfile=test/test.js --platform=node --external:./node_modules/* --target=ESNext --allow-overwrite && node test/test.js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.2.5",
-    "esbuild": "^0.16.16",
+    "esbuild": "^0.16.17",
     "jest": "^29.3.1",
     "ts-jest": "^29.0.3",
     "typescript": "^4.9.4"
