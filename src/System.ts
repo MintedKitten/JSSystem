@@ -19,7 +19,7 @@ class System {
    * @param className {String} The name of the class. Usually retrieve from the private object {#Class_Name = this.constructor.name} from the baseclass.
    * @returns The class object in Object {JSClass}
    */
-  public addClass(className: string, serialBigint: bigint): JSClass {
+  public addClass(className: String, serialBigint: bigint): JSClass {
     for (let index = 0; index < this.#JSClasses.length; index++) {
       const tempclass = this.#JSClasses[index];
       if (
@@ -48,15 +48,15 @@ class System {
    * @param className {String} The name of the registered class that you are looking for
    * @returns The array with the class objects
    */
-  public getClass(className: string): JSClass[] {
-    const _jsclass: JSClass[] = [];
-    this.#JSClasses.map((jsclass) => {
+  public getClass(className: String): JSClass[] {
+    const _jsclasses: JSClass[] = [];
+    this.#JSClasses.forEach((jsclass) => {
       if (className === jsclass.getName()) {
-        _jsclass.push(jsclass);
+        _jsclasses.push(jsclass)
       }
     });
-    if (_jsclass.length > 0) {
-      return _jsclass;
+    if (_jsclasses.length > 0) {
+      return _jsclasses;
     } else {
       throw new Error("Class Not Found");
     }

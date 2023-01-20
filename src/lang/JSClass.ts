@@ -18,10 +18,10 @@ function getInnerJSClass() {
 class JSClass {
   #Class_Name = this.constructor.name;
   #Class_Object = getInnerJSClass;
-  #ClassName = "";
+  #ClassName: String = "";
   #Unique_Serial_BigInt: bigint;
 
-  constructor({ className, serial }: { className: string; serial: bigint }) {
+  constructor({ className, serial }: { className: String; serial: bigint }) {
     this.#Unique_Serial_BigInt = serial;
     this.#ClassName = className;
   }
@@ -30,7 +30,7 @@ class JSClass {
     return this.#Class_Object();
   }
 
-  public getName(): string {
+  public getName(): String {
     return this.#ClassName;
   }
 
