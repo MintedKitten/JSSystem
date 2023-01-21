@@ -3,7 +3,10 @@ import { JSObject } from "./JSObject";
 class Throwable extends JSObject {
   #backtrace: Error = new Error();
   #detailMessage: String | null = null;
-
+/**
+ * 
+ * @param message 
+ */
   public Throwable(message: String | undefined = undefined) {
     this.fillInStackTrace();
     if (message !== undefined) {

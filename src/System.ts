@@ -48,7 +48,7 @@ class System {
    * @param className {String} The name of the registered class that you are looking for
    * @returns The array with the class objects
    */
-  public getClass(className: String): JSClass[] {
+  public getClasses(className: String): JSClass[] {
     const _jsclasses: JSClass[] = [];
     this.#JSClasses.forEach((jsclass) => {
       if (className === jsclass.getName()) {
@@ -66,7 +66,6 @@ class System {
     return this.#JSClasses;
   }
 }
-const JSSystem = new System();
 
 interface Random_Serial_BigInt_Interface {
   min?: bigint;
@@ -78,4 +77,14 @@ function Random_Serial_BigInt(options?: Random_Serial_BigInt_Interface) {
   const max = options?.max || "1e100";
   return BigInt(randBetween(min.toString(), max.toString()).toString());
 }
-export { JSSystem, Random_Serial_BigInt };
+/**
+ * For Internal use
+ */
+const JSSystem = new System();
+/**
+ * Exposing GetClasses and GetAllClasses
+ * For Public Use
+ */
+const JSSystemGetClasses = JSSystem.getClasses;
+const JSSystemGetAllClasses = JSSystem.getAllClasses;
+export { JSSystem, JSSystemGetClasses,JSSystemGetAllClasses, Random_Serial_BigInt };

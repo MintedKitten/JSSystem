@@ -12,7 +12,12 @@
     "bundle:esm": "esbuild src/index.ts --bundle --format=esm --outfile=build/index.mjs --platform=node --external:./node_modules/* --target=ESNext --minify --allow-overwrite",
     "bundle:cjs": "esbuild src/index.ts --bundle --outfile=build/index.js --platform=node --external:./node_modules/* --target=ESNext --minify --allow-overwrite",
     "declaration": "npx tsc --project tsconfig.json",
-    "ts-node:fallback": "esbuild test/test.ts --bundle --outfile=test/test.js --platform=node --external:./node_modules/* --target=ESNext --allow-overwrite && node test/test.js"
+    "ts-node:fallback": "npm run fallback:bundle && npm run fallback:run && npm run fallback:cleanup",
+    "fallback:bundle": "esbuild test/test.ts --bundle --outfile=test/test.js --platform=node --external:./node_modules/* --target=ESNext --allow-overwrite",
+    "fallback:run": "node test/test.js",
+    "fallback:cleanup": "npm run cleanup:linux || npm run cleanup:windows",
+    "cleanup:linux": "rm -f test/test.js",
+    "cleanup:windows": "del \".\\test\\test.js\""
   },
   "repository": {
     "type": "git",

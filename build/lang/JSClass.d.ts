@@ -1,11 +1,11 @@
 declare class JSClass {
     #private;
     constructor({ className, serial }: {
-        className: string;
+        className: String;
         serial: bigint;
     });
     getClass(): JSClass;
-    getName(): string;
+    getName(): String;
     getSerialBigInt(): bigint;
     isEquals(jsclass: JSClass): boolean;
 }

@@ -23,6 +23,10 @@ class JSObject {
    */
   #Class_Object: JSClass;
   /**
+   * The hashcode bigint of each object. Should be different number for each object.
+   */
+  #Hash_BigInt: bigint = Random_Serial_BigInt();
+  /**
    * Contrustor. Object is superclass, so there's no super class contrustor to be called.
    * Every subclass should create a unique serial bigint, to avoid the same class name collision.
    */
@@ -55,7 +59,7 @@ class JSObject {
    * @returns
    */
   public hashCode(): bigint {
-    return BigInt(1);
+    return this.#Hash_BigInt
   }
 
   /**
