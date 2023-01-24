@@ -16,10 +16,10 @@ class System {
   /**
    * When an object of a class is created, that class will attempt to register a class object by passing a class name into this function.
    * If that class name has never been register, this will create a new class object, store it, and return it. If that class name has been register, the corresponding class object will be return.
-   * @param className {String} The name of the class. Usually retrieve from the private object {#Class_Name = this.constructor.name} from the baseclass.
+   * @param className {string} The name of the class. Usually retrieve from the private object {#Class_Name = this.constructor.name} from the baseclass.
    * @returns The class object in Object {JSClass}
    */
-  public addClass(className: String, serialBigint: bigint): JSClass {
+  public addClass(className: string, serialBigint: bigint): JSClass {
     for (let index = 0; index < this.#JSClasses.length; index++) {
       const tempclass = this.#JSClasses[index];
       if (
@@ -45,10 +45,10 @@ class System {
   /**
    * Attempt to find registered class with the specify name. Because javascript allow duplicate class name, namy registered class object can be return. If the class has not been registered, an error will be thrown.
    * @throws {Error} Class Not Found
-   * @param className {String} The name of the registered class that you are looking for
+   * @param className {string} The name of the registered class that you are looking for
    * @returns The array with the class objects
    */
-  public getClasses(className: String): JSClass[] {
+  public getClasses(className: string): JSClass[] {
     const _jsclasses: JSClass[] = [];
     this.#JSClasses.forEach((jsclass) => {
       if (className === jsclass.getName()) {

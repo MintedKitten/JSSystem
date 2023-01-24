@@ -2,28 +2,34 @@ import { JSObject } from "./JSObject";
 
 class Throwable extends JSObject {
   #backtrace: Error = new Error();
-  #detailMessage: String | null = null;
-/**
- * 
- * @param message 
- */
-  public Throwable(message: String | undefined = undefined) {
+  #detailMessage: string | null = null;
+  /**
+   * The constructor of class Throwable
+   * @param message {string} The message in details
+   */
+  constructor(message: string | undefined = undefined) {
+    super();
     this.fillInStackTrace();
     if (message !== undefined) {
       this.#detailMessage = message;
     }
   }
 
-  public getMessage(): String | null {
+  get name(): string {
+    return this.getClass().getName();
+  }
+  stack?: string;
+
+  get message(): string | null {
     return this.#detailMessage;
   }
 
   /**
    * Returns a short description of the Throwable.
    */
-  public toString(): String {
+  public toString(): string {
     const s = this.getClass().getName();
-    const message = this.getMessage();
+    const message = this.message;
     return message !== null ? `${s}: ${message}` : s;
   }
 
@@ -34,10 +40,11 @@ class Throwable extends JSObject {
     if (s === undefined) {
       console.log(this.toString());
       this.printStackTrace0(process.stdout);
-      return;
+    } else {
+      s.write(`${this.toString()}`);
+      this.printStackTrace0(s);
     }
-    s.write(`${this.toString()}`);
-    this.printStackTrace0(s);
+    console.log(this.#backtrace.message);
   }
 
   private printStackTrace0(s: NodeJS.WriteStream): void {}

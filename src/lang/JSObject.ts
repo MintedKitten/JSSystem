@@ -50,7 +50,7 @@ class JSObject {
    * Return the string representation of this object. Default implementation return the name of the baseclass.
    * @returns The name of the class.
    */
-  public toString(): String {
+  public toString(): string {
     return `class ${this.getClass().getName()}`;
   }
 

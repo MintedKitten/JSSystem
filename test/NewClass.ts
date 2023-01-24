@@ -15,6 +15,11 @@ class NewClass extends JSObject {
   public toString() {
     return "";
   }
+
+  public demoError(): string {
+    
+    return "Should be error!";
+  }
 }
 
 export { NewClass };
