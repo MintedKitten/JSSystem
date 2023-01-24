@@ -1,29 +1,38 @@
-import { JSObject, JSSystemGetClasses } from "../src";
-import { NewClass as NewClassA } from "./NewClass";
-import { NewClass as NewClassB } from "./DupNameClass";
+import {
+  JSSystemGetClasses,
+  JSSystemGetAllClasses,
+  JSSystemGetClass,
+} from "../src";
+import { ClassNotFoundError } from "../src/lang/ClassNotFoundError";
+import { NewClass } from "./NewClass";
 
-// const jsob1 = new JSObject();
-// const jsob2 = new JSObject();
+const newob = new NewClass();
+newob.getClass();
+const cls = JSSystemGetAllClasses();
+cls.forEach((jsclass) => {
+  console.log(jsclass.getName());
+});
 
-// const newob1 = new NewClassA();
-// const newob2 = new NewClassA();
+try {
+  const classOb = JSSystemGetClass("JSObject");
+} catch (e) {
+  if (e.getClass() === JSSystemGetClasses("ClassNotFoundError")[0]) {
+    const error = e as ClassNotFoundError;
+    console.log(`A: ${error.name}`);
+    console.log(`B: ${error.message}`);
+    console.error(error.stack);
+  }
+}
 
-// const newob3 = new NewClassB();
-
-// console.log(jsob1.getClass() === newob1.getClass()); // false
-// console.log(jsob1.getClass() === jsob1.getClass()); // true
-// console.log(jsob1.getClass() === jsob2.getClass()); // true
-// console.log(newob1.getClass() === newob2.getClass()); // true
-// console.log(newob1.getClass() === newob3.getClass()); // false
-
-// const JSObjectClass = JSSystemGetClasses("JSObject")[0];
-
-// console.log(jsob1.getClass() === JSObjectClass);
-
-// console.log(jsob1.getClass().getName());
-// console.log(newob1.getClass().getName());
-// console.log(jsob2.getClass().getName());
-// console.log(newob2.getClass().getName());
-// console.log(newob2.getClass().getClass().getClass());
-
-
+try {
+  const classOb = JSSystemGetClass("NewClass");
+  console.log(`${classOb.getName()} is registered`);
+} catch (e) {
+  if (e.getClass() === JSSystemGetClasses("ClassNotFoundError")[0]) {
+    const error = e as ClassNotFoundError;
+    console.log(`A: ${error.name}`);
+    console.log(`B: ${error.message}`);
+    console.log(`C: ${error.stack}`);
+    console.error(error.stack);
+  }
+}

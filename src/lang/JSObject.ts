@@ -8,6 +8,7 @@ const __inner_serial_bigint = Random_Serial_BigInt();
 
 /**
  * JSS Object Class. The superclass of every class
+ * @class JSS.lang.JSObject
  */
 class JSObject {
   /**
@@ -59,7 +60,7 @@ class JSObject {
    * @returns
    */
   public hashCode(): bigint {
-    return this.#Hash_BigInt
+    return this.#Hash_BigInt;
   }
 
   /**

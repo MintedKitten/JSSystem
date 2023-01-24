@@ -14,7 +14,10 @@ const __inner_jsclass_serial_bigint = Random_Serial_BigInt();
 function getInnerJSClass() {
   return __inner_class_object;
 }
-
+/**
+ * The class of the class object. Use for class comparison.
+ * @class JSS.lang.JSClass
+ */
 class JSClass {
   #Class_Name = this.constructor.name;
   #Class_Object = getInnerJSClass;

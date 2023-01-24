@@ -1,5 +1,8 @@
 import { JSObject } from "./JSObject";
-
+/**
+ * JSS Throwable class. The base of every throwable class in JSS
+ * @class JSS.lang.Throwable
+ */
 class Throwable extends JSObject {
   #backtrace: Error = new Error();
   #detailMessage: string | null = null;
@@ -44,13 +47,12 @@ class Throwable extends JSObject {
       s.write(`${this.toString()}`);
       this.printStackTrace0(s);
     }
-    console.log(this.#backtrace.message);
   }
 
   private printStackTrace0(s: NodeJS.WriteStream): void {}
 
   private fillInStackTrace(): void {
-    this.#backtrace = new Error(this.#backtrace.stack);
+    Error.captureStackTrace(this);
   }
 }
 
