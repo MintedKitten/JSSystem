@@ -13,7 +13,7 @@ class Throwable extends JSObject {
   constructor(message: string | undefined = undefined) {
     super();
     this.fillInStackTrace();
-    if (message !== undefined) {
+    if (message !== undefined && message !== "") {
       this.#detailMessage = message;
     }
   }
@@ -23,8 +23,8 @@ class Throwable extends JSObject {
   }
   stack?: string;
 
-  get message(): string | null {
-    return this.#detailMessage;
+  get message(): string {
+    return this.#detailMessage ?? "";
   }
 
   /**
