@@ -70,7 +70,7 @@ class System {
   }
   /**
    * Try to convert the object to a class.
-   * Require the class type and class name.
+   * Require the class type and class name to be the same.
    * @T {type} The type to be converted to.
    * @param .object {any} The object to be converted.
    * @param .className {string} The name of the registered class.
@@ -85,7 +85,7 @@ class System {
       let isCompatible = false;
       jsclasses.forEach(function (jsclass) {
         if (object.getClass() === jsclass) {
-          return true;
+          isCompatible = true;
         }
       });
       if (isCompatible) {
@@ -169,7 +169,7 @@ function JSSystemGetAllClasses(): JSClass[] {
 /**
  * Wrapping JSSystem.tryBecomeClass for public use.
  * Try to convert the object to a class.
- * Require the class type and class name.
+ * Require the class type and class name to be the same.
  * @T {type} The type to be converted to.
  * @param .object {any} The object to be converted.
  * @param .className {string} The name of the registered class.
@@ -178,8 +178,8 @@ function JSSystemGetAllClasses(): JSClass[] {
 function JSSystemTryBecomeClass<T>({
   object,
   className,
-}: Try_Become_Class_Interface): ReturnType<typeof JSSystem.tryBecomeClass> {
-  return JSSystem.tryBecomeClass<T>({ object, className });
+}: Try_Become_Class_Interface): ReturnType<typeof JSSystem.tryBecomeClass<T>> {
+  return JSSystem.tryBecomeClass<T>({ object: object, className: className });
 }
 export {
   JSSystem,
