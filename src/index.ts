@@ -8,9 +8,12 @@ import {
   Random_Serial_BigInt_Interface,
 } from "./System";
 import { JSObject } from "./lang/JSObject";
-import { Throwable } from "./lang/Throwable";
+
+// Make sure everything is exported
+import { ClassNotFoundError } from "./lang/ClassNotFoundError";
 import { JSError } from "./lang/JSError";
 import { JSException } from "./lang/JSException";
+import { Throwable } from "./lang/Throwable";
 
 /**
  * JSClass must be loaded before JSSystem and JSObject
@@ -26,5 +29,6 @@ export {
   JSError,
   JSException,
   JSSystemGetClass,
+  ClassNotFoundError,
 };
 export type { Random_Serial_BigInt_Interface };
