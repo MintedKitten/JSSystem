@@ -33,10 +33,10 @@ class System {
       }
     }
     if (jsclass !== undefined) {
-      // The class has already been registered, return the class object
+      // The class has already been registered, return the class object.
       return jsclass;
     } else {
-      // The class has not been registered, register and return the class object
+      // The class has not been registered, register and return the class object.
       jsclass = new JSClass({ className: className, serial: serialBigint });
       this.#JSClasses.push(jsclass);
       return jsclass;
@@ -45,8 +45,8 @@ class System {
   /**
    * Attempt to find registered class with the specify name. Because javascript allow duplicate class name, namy registered class object can be return. If the class has not been registered, an error will be thrown.
    * @throws {ClassNotFoundError} Class Not Found
-   * @param className {string} The name of the registered class that you are looking for
-   * @returns {JSClass[]} The array of class objects where the class name is the same as the lookup registered class name
+   * @param className {string} The name of the registered class that you are looking for.
+   * @returns {JSClass[]} The array of class objects where the class name is the same as the lookup registered class name.
    */
   public getClasses(className: string): JSClass[] {
     const _jsclasses: JSClass[] = [];
@@ -69,10 +69,11 @@ class System {
     return this.#JSClasses;
   }
   /**
-   * If object can become a class, return true and the object as that class.
-   * If not, return false.
-   * @param object {object} The object being converted
-   * @param className {string} The name of the class
+   * Try to convert the object to a class.
+   * Require the class type and class name.
+   * @T {type} The type to be converted to.
+   * @param .object {any} The object to be converted.
+   * @param .className {string} The name of the registered class.
    * @returns {boolean | undefined} If object can be converted, will return the object after converted; otherwise return undefined.
    */
   public tryBecomeClass<T>({
@@ -90,21 +91,23 @@ class System {
       if (isCompatible) {
         return object as T;
       } else {
-        throw new Error("Not Convertable");
+        throw new Error("Not Convertable, Throw new Error to be catch");
       }
     } catch (e) {
+      // Either error from not convertable, or object isn't a JSObject.
       return undefined;
     }
   }
 }
 interface Try_Become_Class_Interface {
+  // rome-ignore lint/suspicious/noExplicitAny: Really anything can be tried.
   object: any;
   className: string;
 }
 /**
  * The interface for @function{Random_Serial_BigInt}
  * @param min Minimum range inclusive - Optional - Default: -1e100
- * @parem man Maximum range inclusive - Optional - Default: 1e100
+ * @param max Maximum range inclusive - Optional - Default: 1e100
  */
 interface Random_Serial_BigInt_Interface {
   /**
@@ -118,6 +121,7 @@ interface Random_Serial_BigInt_Interface {
 }
 /**
  * Randomly generated bigint. Made for class serial bigint.
+ * @function JSS.Random_Serial_BigInt
  * @param options {Random_Serial_BigInt_Interface} The option for @function{Random_Serial_BigInt}
  * @returns {bigint} A bigint
  */
@@ -133,42 +137,56 @@ function Random_Serial_BigInt(
  */
 const JSSystem = new System();
 /**
- * Wrapping JSSystem.getClasses
- * For Public Use
+ * Wrapping JSSystem.getClasses for public use.
  * @function JSS.JSSystemGetClasses
  * @throws {ClassNotFoundError} Class Not Found
- * @param className {string} The name of the registered class that you are looking for
- * @returns {JSClass[]} The array of class object where the class name is the same as the lookup registered class name
+ * @param className {string} The name of the registered class that you are looking for.
+ * @returns {JSClass[]} The array of class object where the class name is the same as the lookup registered class name.
  */
 function JSSystemGetClasses(className: string): JSClass[] {
   return JSSystem.getClasses(className);
 }
 /**
- * Wrapping JSSystemGetClass and return the first index
- * For Public Use
+ * Wrapping JSSystemGetClass for public use.
+ * Call JSSystemGetClasses and return the first index.
  * @see {@link JSSystemGetClasses}
  * @function JSS.JSSystemGetClass
  * @throws {ClassNotFoundError} Class Not Found
- * @param className {string} The name of the registered class that you are looking for
- * @returns {JSClass} The class object
+ * @param className {string} The name of the registered class that you are looking for.
+ * @returns {JSClass} The class object where the class name is the same as the lookup registered class name.
  */
 function JSSystemGetClass(className: string): JSClass {
   return JSSystemGetClasses(className)[0];
 }
 /**
- * Wrapping JSSystem.getAllClasses
- * For Public Use
+ * Wrapping JSSystem.getAllClasses for public use.
  * @function JSS.JSSystemGetAllClasses
  * @returns {JSClass[]} The array of every registered class objects.
  */
 function JSSystemGetAllClasses(): JSClass[] {
   return JSSystem.getAllClasses();
 }
+/**
+ * Wrapping JSSystem.tryBecomeClass for public use.
+ * Try to convert the object to a class.
+ * Require the class type and class name.
+ * @T {type} The type to be converted to.
+ * @param .object {any} The object to be converted.
+ * @param .className {string} The name of the registered class.
+ * @returns {boolean | undefined} If object can be converted, will return the object after converted; otherwise return undefined.
+ */
+function JSSystemTryBecomeClass<T>({
+  object,
+  className,
+}: Try_Become_Class_Interface): ReturnType<typeof JSSystem.tryBecomeClass> {
+  return JSSystem.tryBecomeClass<T>({ object, className });
+}
 export {
   JSSystem,
   JSSystemGetClasses,
   JSSystemGetClass,
   JSSystemGetAllClasses,
+  JSSystemTryBecomeClass,
   Random_Serial_BigInt,
 };
 export type { Random_Serial_BigInt_Interface };

@@ -4,6 +4,7 @@ import {
   JSSystemGetAllClasses,
   Random_Serial_BigInt,
   JSSystemGetClass,
+  JSSystemTryBecomeClass,
   Random_Serial_BigInt_Interface,
 } from "./System";
 import { JSObject } from "./lang/JSObject";
@@ -19,6 +20,7 @@ export {
   JSClass,
   JSSystemGetClasses,
   JSSystemGetAllClasses,
+  JSSystemTryBecomeClass,
   Random_Serial_BigInt,
   Throwable,
   JSError,
