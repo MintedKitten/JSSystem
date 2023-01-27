@@ -17,4 +17,9 @@ class NewClass extends JSObject {
   }
 }
 
+const testerr = new Error;
+Error.stackTraceLimit = Number.POSITIVE_INFINITY;
+Error.captureStackTrace(testerr)
+console.log(testerr.stack)
+
 export { NewClass };

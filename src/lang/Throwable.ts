@@ -7,7 +7,8 @@ class Throwable extends JSObject {
   #backtrace: Error = new Error();
   #detailMessage: string | null = null;
   /**
-   * The constructor of class Throwable
+   * The constructs a new Throwable with the specified detail message.
+   * The stack trace is automatically filled in.
    * @param message {string} The message in details
    */
   constructor(message: string | undefined = undefined) {
