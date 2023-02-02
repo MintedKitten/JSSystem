@@ -17,7 +17,8 @@
     "fallback:run": "node test/test.js",
     "fallback:cleanup": "npm run cleanup:linux || npm run cleanup:windows",
     "cleanup:linux": "rm -f test/test.js",
-    "cleanup:windows": "del \".\\test\\test.js\""
+    "cleanup:windows": "del \".\\test\\test.js\"",
+    "build:testBuild": "npx tsc test/test.ts --outDir testBuild --esModuleInterop --target esnext --moduleResolution node"
   },
   "repository": {
     "type": "git",

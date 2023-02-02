@@ -52,7 +52,10 @@ class Throwable extends JSObject {
   private printStackTrace0(s: NodeJS.WriteStream): void {}
 
   private fillInStackTrace(): void {
+    const temps = Error.stackTraceLimit;
+    Error.stackTraceLimit = Number.POSITIVE_INFINITY;
     Error.captureStackTrace(this);
+    Error.stackTraceLimit = temps;
   }
 }
 

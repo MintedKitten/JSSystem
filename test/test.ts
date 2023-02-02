@@ -1,5 +1,8 @@
-import { JSSystemGetClass, JSSystemTryBecomeClass } from "../src";
-import { ClassNotFoundError } from "../src/lang/ClassNotFoundError";
+import {
+  JSSystemGetClass,
+  JSSystemTryBecomeClass,
+  ClassNotFoundError,
+} from "../src";
 import { NewClass } from "./NewClass";
 
 const newob = new NewClass();
@@ -8,7 +11,10 @@ try {
   const classOb = JSSystemGetClass("JSObject");
   console.log(`${classOb.getName()} is registered`);
 } catch (e) {
-  const error = JSSystemTryBecomeClass<ClassNotFoundError>({object: e, className: "ClassNotFoundError"});
+  const error = JSSystemTryBecomeClass<ClassNotFoundError>({
+    object: e,
+    className: "ClassNotFoundError",
+  });
   if (error) {
     console.log(`A: ${error.name}`);
     console.log(`B: ${error.message}`);
@@ -22,7 +28,10 @@ try {
   const classOb = JSSystemGetClass("NewClass");
   console.log(`${classOb.getName()} is registered`);
 } catch (e) {
-  const error = JSSystemTryBecomeClass<ClassNotFoundError>({object: e, className: "ClassNotFoundError"});
+  const error = JSSystemTryBecomeClass<ClassNotFoundError>({
+    object: e,
+    className: "ClassNotFoundError",
+  });
   if (error) {
     console.log(`A: ${error.name}`);
     console.log(`B: ${error.message}`);
