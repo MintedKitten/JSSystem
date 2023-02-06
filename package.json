@@ -33,6 +33,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.2.5",
+    "@types/object-hash": "^3.0.2",
     "esbuild": "^0.16.17",
     "jest": "^29.3.1",
     "ts-jest": "^29.0.3",
@@ -42,6 +43,7 @@
     "./build"
   ],
   "dependencies": {
-    "big-integer": "^1.6.51"
+    "big-integer": "^1.6.51",
+    "object-hash": "^3.0.0"
   }
 }

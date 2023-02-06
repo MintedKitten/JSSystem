@@ -1,4 +1,5 @@
 import { JSSystem, Random_Serial_BigInt } from "../System";
+import hasher from "object-hash";
 /**
  * Serial BigInt
  */
@@ -22,6 +23,7 @@ class JSObject {
     #Class_Object;
     /**
      * The hashcode bigint of each object. Should be different number for each object.
+     * The current implementation uses the serial of the JSObject and an offset;
      */
     #Hash_BigInt = Random_Serial_BigInt();
     /**
@@ -51,7 +53,8 @@ class JSObject {
      * @returns
      */
     hashCode() {
-        return this.#Hash_BigInt;
+        const hash = hasher(this.#Class_Object);
+        return BigInt(hash);
     }
     /**
      * Compares two Objects for equality.
