@@ -18,6 +18,7 @@
     "fallback:cleanup": "npm run cleanup:linux || npm run cleanup:windows",
     "cleanup:linux": "rm -f test/test.js",
     "cleanup:windows": "del \".\\test\\test.js\"",
+    "build": "build-esbuild -s src -o build -f esm",
     "build:testBuild": "npx tsc test/test.ts --outDir testBuild --esModuleInterop --target esnext --moduleResolution node"
   },
   "repository": {
@@ -34,7 +35,7 @@
   "devDependencies": {
     "@types/jest": "^29.2.5",
     "@types/object-hash": "^3.0.2",
-    "esbuild": "^0.16.17",
+    "build-esbuild": "github:MintedKitten/build-esbuild",
     "jest": "^29.3.1",
     "ts-jest": "^29.0.3",
     "typescript": "^4.9.4"
