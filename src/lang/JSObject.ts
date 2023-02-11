@@ -1,7 +1,6 @@
 import { JSSystem, Random_Serial_BigInt } from "./System";
 import { JSClass } from "./JSClass";
-
-import hasher from "object-hash";
+import { v4 as uuidv4 } from "uuid";
 
 /**
  * Serial BigInt
@@ -29,10 +28,12 @@ class JSObject {
    * The hashcode bigint of each object. Should be different number for each object.
    * The current implementation uses the serial of the JSObject and an offset;
    */
-  #Hash_BigInt: bigint = Random_Serial_BigInt();
+  #Hash_BigInt: bigint = BigInt(`0x${uuidv4().replace("-", "")}`);
   /**
    * Contrustor. Object is superclass, so there's no super class contrustor to be called.
    * Every subclass should create a unique serial bigint, to avoid the same class name collision.
+   * Recommended to enter unique serial bigint. Or use @function{Random_Serial_BigInt} to randomly generated one.
+   * @param serialBigInt {bigint} The serial bigint of the object.
    */
   constructor(serialBigInt: bigint = __inner_serial_bigint) {
     this.#Class_Serial = serialBigInt ?? __inner_serial_bigint;
@@ -52,28 +53,27 @@ class JSObject {
 
   /**
    * Return the string representation of this object. Default implementation return the name of the baseclass.
-   * @returns The name of the class.
+   * @returns {string} The name of the class.
    */
   public toString(): string {
     return `class ${this.getClass().getName()}`;
   }
 
   /**
-   *
-   * @returns
+   * Return a hash as bigint. Each hash should be unique to each object and static.
+   * @returns {bigint} The hash bigint.
    */
   public hashCode(): bigint {
-    const hash = hasher(this.#Class_Object);
-    return BigInt(hash);
+    return BigInt(this.getClass().getSerialBigInt() + this.#Hash_BigInt);
   }
 
   /**
-   * Compares two Objects for equality.
+   * Compares two JSObjects for equality.
    * Returns a boolean that indicates whether this Object is equivalent
    * to the specified Object. This method is used when an Object is stored
    * in a hashtable.
-   * @param ob
-   * @returns
+   * @param ob {JSObject} The object to compare to.
+   * @returns {boolean} Return true, if it is the same object. Otherwise false.
    */
   public isEquals(ob: JSObject): boolean {
     return this === ob;

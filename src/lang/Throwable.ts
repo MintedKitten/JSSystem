@@ -19,17 +19,28 @@ class Throwable extends JSObject {
     }
   }
 
+  /**
+   * The name of the throwable class.
+   */
   get name(): string {
     return this.getClass().getName();
   }
+
+  /**
+   * The stack trace of the throwable.
+   */
   stack?: string;
 
+  /**
+   * The message details of the throwable.
+   */
   get message(): string {
     return this.#detailMessage ?? "";
   }
 
   /**
    * Returns a short description of the Throwable.
+   * @returns {string} The string representation of the throwable.
    */
   public toString(): string {
     const s = this.getClass().getName();
@@ -39,6 +50,7 @@ class Throwable extends JSObject {
 
   /**
    * Prints the Throwable and the Throwable's stack trace.
+   * @param s {NodeJS.WriteStream} A custom write stream - Optional
    */
   public printStackTrace(s: NodeJS.WriteStream | undefined = undefined): void {
     if (s === undefined) {
@@ -50,8 +62,15 @@ class Throwable extends JSObject {
     }
   }
 
+  /**
+   * I don't actually know how to implement this. So nothing here.
+   * @param s {NodeJS.WriteStream} A custom write stream
+   */
   private printStackTrace0(s: NodeJS.WriteStream): void {}
 
+  /**
+   * A thing
+   */
   private fillInStackTrace(): void {
     const temps = Error.stackTraceLimit;
     Error.stackTraceLimit = Number.POSITIVE_INFINITY;
