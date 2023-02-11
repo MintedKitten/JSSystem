@@ -6,7 +6,7 @@ import {
   JSSystemGetClass,
   JSSystemTryBecomeClass,
   Random_Serial_BigInt_Interface,
-} from "./System";
+} from "./lang/System";
 import { JSObject } from "./lang/JSObject";
 
 // Make sure everything is exported

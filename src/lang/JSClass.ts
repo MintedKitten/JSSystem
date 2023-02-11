@@ -1,4 +1,4 @@
-import { JSSystem, Random_Serial_BigInt } from "../System";
+import { JSSystem, Random_Serial_BigInt } from "./System";
 
 let __inner_class_object: JSClass;
 

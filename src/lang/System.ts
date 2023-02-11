@@ -1,6 +1,6 @@
-import { JSClass } from "./lang/JSClass";
+import { JSClass } from "./JSClass";
 import { randBetween } from "big-integer";
-import { ClassNotFoundError } from "./lang/ClassNotFoundError";
+import { ClassNotFoundError } from "./ClassNotFoundError";
 
 /**
  * JSS System Class. The class that keeps everything in check.
