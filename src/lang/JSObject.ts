@@ -36,7 +36,7 @@ class JSObject {
    * @param serialBigInt {bigint} The serial bigint of the object.
    */
   constructor(serialBigInt: bigint = __inner_serial_bigint) {
-    this.#Class_Serial = serialBigInt ?? __inner_serial_bigint;
+    this.#Class_Serial = serialBigInt;
     this.#Class_Object = JSSystem.addClass(
       this.#Class_Name,
       this.#Class_Serial
