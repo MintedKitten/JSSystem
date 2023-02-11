@@ -53,5 +53,4 @@ __inner_class_object = JSSystem.addClass(
   "JSClass",
   __inner_jsclass_serial_bigint
 );
-
 export { JSClass };

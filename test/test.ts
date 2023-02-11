@@ -1,45 +1,84 @@
-import { TestClass } from "./testClass";
+import { IllegalArgumentException } from "../build";
+import { TestClass } from "./TestClass";
 
 const newob = new TestClass();
-
-const r = { a: 1, b: 2, c: 3 };
-
-let { a, b, c } = r;
-a = 5;
 
 console.log(newob.toString());
 console.log(newob.hashCode());
 
-/**
- * function Afunc(){
- *  Afunc("thing");
- *  console.log("Override empty");
- * }
- *
- * function Afunc(message: string){
- *  Afunc(message, 1234);
- *  console.log("Override only message");
- * }
- *
- * function Afunc(message: string, num: number){
- *  console.log(message, num);
- *  console.log("Main function");
- * }
- *
- * --====--
- *
- * interface Afunc_Params_Interface {
- *   message: string;
- *   num: number | undefined;
- * }
- * function Afunc(params?: Afunc_Params_Interface){
- *  let _message = "";
- *  let _num = 0;
- *  if (params === undefined){
- *    _message = "thing";
- *  }else{
- * let {message, num} = params;
- * if (m)
- * }
- * }
- */
+function Afunc1() {
+  console.log("before 2");
+  Afunc2("thing");
+  console.log("Override empty");
+}
+
+function Afunc2(message: string) {
+  console.log("before 3");
+  Afunc3(message, 1234);
+  console.log("Override only message");
+}
+
+function Afunc3(message: string, num: number) {
+  console.log("before main");
+  console.log(message, num);
+  console.log("Main function");
+}
+
+interface Afunc_Params_Interface {
+  message?: string | undefined;
+  num?: number | undefined;
+}
+
+function Afunc(params?: Afunc_Params_Interface) {
+  let _params: Afunc_Params_Interface;
+  if (params === undefined) {
+    // undefined params = {} params
+    _params = {};
+  } else {
+    _params = params;
+  }
+  let { message, num } = _params;
+  let overrideFuncsArray: Array<Function> = [];
+  // Overload 1
+  if (message === undefined && num === undefined) {
+    console.log("before 2");
+    message = "thing";
+    function _aftercall() {
+      console.log("Override empty");
+    }
+    overrideFuncsArray.splice(0, 0, _aftercall);
+  }
+  // Overload 2
+  if (message !== undefined && num === undefined) {
+    console.log("before 3");
+    message = message;
+    num = 1234;
+    function _aftercall() {
+      console.log("Override only message");
+    }
+    overrideFuncsArray.splice(0, 0, _aftercall);
+  }
+  // Main
+  if (message !== undefined && num !== undefined) {
+    console.log("before main");
+    function _aftercall() {
+      console.log(message, num);
+      console.log("Main function");
+    }
+    overrideFuncsArray.splice(0, 0, _aftercall);
+  }
+  if (overrideFuncsArray.length > 0) {
+    for (const _call of overrideFuncsArray) {
+      _call();
+    }
+  } else {
+    throw new IllegalArgumentException({
+      message: "No overloading function matched",
+    });
+  }
+}
+try {
+  Afunc({ num: 2 });
+} catch (e) {
+  console.error(e.stack);
+}

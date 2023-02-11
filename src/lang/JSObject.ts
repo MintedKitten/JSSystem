@@ -28,7 +28,7 @@ class JSObject {
    * The hashcode bigint of each object. Should be different number for each object.
    * The current implementation uses the serial of the JSObject and an offset;
    */
-  #Hash_BigInt: bigint = BigInt(`0x${uuidv4().replace("-", "")}`);
+  #Hash_BigInt: bigint = BigInt(`0x${uuidv4().replace(/-/g, "")}`);
   /**
    * Contrustor. Object is superclass, so there's no super class contrustor to be called.
    * Every subclass should create a unique serial bigint, to avoid the same class name collision.
@@ -60,7 +60,7 @@ class JSObject {
   }
 
   /**
-   * Return a hash as bigint. Each hash should be unique to each object and static.
+   * Return a hash as bigint. Each object should have a unique hash.
    * @returns {bigint} The hash bigint.
    */
   public hashCode(): bigint {

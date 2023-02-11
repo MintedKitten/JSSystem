@@ -3,20 +3,36 @@ import { JSObject } from "./JSObject";
  * JSS Throwable class. The base of every throwable class in JSS
  * @class JSS.lang.Throwable
  */
+
+interface Throwable_Contructor_Interface {
+  /**
+   * The class or arrow class of the throwable.
+   */
+  classFunction?: Function;
+  /**
+   * The message in details - Optional
+   */
+  message?: string;
+}
+
 class Throwable extends JSObject {
-  #backtrace: Error = new Error();
+  #backtrace: string = "";
+  #classFunctionCall: Function = function () {};
   #detailMessage: string | null = null;
   /**
    * The constructs a new Throwable with the specified detail message.
    * The stack trace is automatically filled in.
-   * @param message {string} The message in details
+   * The classFcuntion parameter is used in inheritance so the stack trace works properly.
+   * @param classFunction {Function} The class or arrow class of the throwable. Only for class inheritance.
+   * @param message {string} The message in details - Optional
    */
-  constructor(message: string | undefined = undefined) {
+  constructor({ classFunction, message }: Throwable_Contructor_Interface) {
     super();
-    this.fillInStackTrace();
+    this.#classFunctionCall = classFunction ?? Throwable;
     if (message !== undefined && message !== "") {
       this.#detailMessage = message;
     }
+    this.fillInStackTrace();
   }
 
   /**
@@ -29,7 +45,9 @@ class Throwable extends JSObject {
   /**
    * The stack trace of the throwable.
    */
-  stack?: string;
+  get stack(): string {
+    return this.toString() + this.#backtrace;
+  }
 
   /**
    * The message details of the throwable.
@@ -45,14 +63,14 @@ class Throwable extends JSObject {
   public toString(): string {
     const s = this.getClass().getName();
     const message = this.message;
-    return message !== null ? `${s}: ${message}` : s;
+    return message !== "" ? `${s}: ${message}` : s;
   }
 
   /**
    * Prints the Throwable and the Throwable's stack trace.
    * @param s {NodeJS.WriteStream} A custom write stream - Optional
    */
-  public printStackTrace(s: NodeJS.WriteStream | undefined = undefined): void {
+  public printStackTrace(s?: NodeJS.WriteStream): void {
     if (s === undefined) {
       console.log(this.toString());
       this.printStackTrace0(process.stdout);
@@ -63,20 +81,23 @@ class Throwable extends JSObject {
   }
 
   /**
-   * I don't actually know how to implement this. So nothing here.
+   * I don't actually know how to implement this. So nothing's here.
    * @param s {NodeJS.WriteStream} A custom write stream
    */
   private printStackTrace0(s: NodeJS.WriteStream): void {}
 
   /**
-   * A thing
+   * A thing to get stack trace
    */
   private fillInStackTrace(): void {
     const temps = Error.stackTraceLimit;
     Error.stackTraceLimit = Number.POSITIVE_INFINITY;
-    Error.captureStackTrace(this);
+    const object = { stack: "" };
+    Error.captureStackTrace(object, this.#classFunctionCall);
     Error.stackTraceLimit = temps;
+    this.#backtrace = object.stack.slice(5);
   }
 }
 
 export { Throwable };
+export type { Throwable_Contructor_Interface };

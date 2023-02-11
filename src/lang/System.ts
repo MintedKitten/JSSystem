@@ -1,5 +1,5 @@
 import { JSClass } from "./JSClass";
-import { randBetween } from "big-integer";
+import big__integer from "big-integer"; // big-integer doesn't support destruct import
 import { ClassNotFoundError } from "./ClassNotFoundError";
 
 /**
@@ -58,7 +58,7 @@ class System {
     if (_jsclasses.length > 0) {
       return _jsclasses;
     } else {
-      throw new ClassNotFoundError("Class Not Found");
+      throw new ClassNotFoundError({ message: "Class Not Found" });
     }
   }
   /**
@@ -130,7 +130,9 @@ function Random_Serial_BigInt(
 ): bigint {
   const min = options?.min || "-1e100";
   const max = options?.max || "1e100";
-  return BigInt(randBetween(min.toString(), max.toString()).toString());
+  return BigInt(
+    big__integer.randBetween(min.toString(), max.toString()).toString()
+  );
 }
 /**
  * For Internal Use
