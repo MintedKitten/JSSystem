@@ -60,12 +60,12 @@ function Afunc(params?: Afunc_Params_Interface) {
   }
   // Main
   if (message !== undefined && num !== undefined) {
-    console.log("before main");
-    function _aftercall() {
+    function defaultcall() {
+      console.log("before main");
       console.log(message, num);
       console.log("Main function");
     }
-    overrideFuncsArray.splice(0, 0, _aftercall);
+    overrideFuncsArray.splice(0, 0, defaultcall);
   }
   if (overrideFuncsArray.length > 0) {
     for (const _call of overrideFuncsArray) {
@@ -81,4 +81,15 @@ try {
   Afunc({ num: 2 });
 } catch (e) {
   console.error(e.stack);
+}
+
+function test(params: string): number;
+function test(params: number): string;
+
+function test(params: string | number): string | number {
+  if (typeof params === "string") {
+    return params.length;
+  } else {
+    return params.toString();
+  }
 }

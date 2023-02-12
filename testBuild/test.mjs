@@ -47,13 +47,13 @@ function Afunc(params) {
     overrideFuncsArray.splice(0, 0, _aftercall2);
   }
   if (message !== void 0 && num !== void 0) {
-    let _aftercall2 = function() {
+    let defaultcall2 = function() {
+      console.log("before main");
       console.log(message, num);
       console.log("Main function");
     };
-    var _aftercall = _aftercall2;
-    console.log("before main");
-    overrideFuncsArray.splice(0, 0, _aftercall2);
+    var defaultcall = defaultcall2;
+    overrideFuncsArray.splice(0, 0, defaultcall2);
   }
   if (overrideFuncsArray.length > 0) {
     for (const _call of overrideFuncsArray) {
@@ -69,4 +69,11 @@ try {
   Afunc({ num: 2 });
 } catch (e) {
   console.error(e.stack);
+}
+function test(params) {
+  if (typeof params === "string") {
+    return params.length;
+  } else {
+    return params.toString();
+  }
 }
