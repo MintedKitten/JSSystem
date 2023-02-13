@@ -1,8 +1,16 @@
-import { IllegalArgumentException } from "../build/index.mjs";
+import {
+  IllegalArgumentException,
+  JSSystemGetAllClasses,
+  JSSystemTryBecomeClass
+} from "../build/index.mjs";
 import { TestClass } from "./TestClass.mjs";
 const newob = new TestClass();
 console.log(newob.toString());
 console.log(newob.hashCode());
+const classes = JSSystemGetAllClasses();
+for (const _class of classes) {
+  console.log(_class.getName());
+}
 function Afunc1() {
   console.log("before 2");
   Afunc2("thing");
@@ -14,9 +22,9 @@ function Afunc2(message) {
   console.log("Override only message");
 }
 function Afunc3(message, num) {
-  console.log("before main");
+  console.log("Main Begin");
   console.log(message, num);
-  console.log("Main function");
+  console.log("Main End");
 }
 function Afunc(params) {
   let _params;
@@ -48,9 +56,9 @@ function Afunc(params) {
   }
   if (message !== void 0 && num !== void 0) {
     let defaultcall2 = function() {
-      console.log("before main");
+      console.log("Main Begin");
       console.log(message, num);
-      console.log("Main function");
+      console.log("Main End");
     };
     var defaultcall = defaultcall2;
     overrideFuncsArray.splice(0, 0, defaultcall2);
@@ -66,14 +74,15 @@ function Afunc(params) {
   }
 }
 try {
-  Afunc({ num: 2 });
+  const num = 5;
+  const message = "al";
+  Afunc({ message, num });
 } catch (e) {
-  console.error(e.stack);
-}
-function test(params) {
-  if (typeof params === "string") {
-    return params.length;
-  } else {
-    return params.toString();
+  const error = JSSystemTryBecomeClass({
+    object: e,
+    className: "IllegalArgumentException"
+  });
+  if (error) {
+    console.log(error.stack);
   }
 }

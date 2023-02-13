@@ -1,10 +1,19 @@
-import { IllegalArgumentException } from "../build";
+import {
+  IllegalArgumentException,
+  JSSystemGetAllClasses,
+  JSSystemTryBecomeClass,
+} from "../build";
 import { TestClass } from "./TestClass";
 
 const newob = new TestClass();
 
 console.log(newob.toString());
 console.log(newob.hashCode());
+
+const classes = JSSystemGetAllClasses();
+for (const _class of classes) {
+  console.log(_class.getName());
+}
 
 function Afunc1() {
   console.log("before 2");
@@ -19,17 +28,32 @@ function Afunc2(message: string) {
 }
 
 function Afunc3(message: string, num: number) {
-  console.log("before main");
+  console.log("Main Begin");
   console.log(message, num);
-  console.log("Main function");
+  console.log("Main End");
 }
 
 interface Afunc_Params_Interface {
   message?: string | undefined;
   num?: number | undefined;
 }
+/**
+ * A tsdocs
+ */
+function Afunc(): void;
+/**
+ * C tsdocs
+ * @param .message {string}
+ */
+function Afunc({ message }: { message: string }): void;
+/**
+ * D tsdocs
+ * @param .message {string}
+ * @param .num {num}
+ */
+function Afunc({ message, num }: { message: string; num: number }): void;
 
-function Afunc(params?: Afunc_Params_Interface) {
+function Afunc(params?: Afunc_Params_Interface): void {
   let _params: Afunc_Params_Interface;
   if (params === undefined) {
     // undefined params = {} params
@@ -61,9 +85,9 @@ function Afunc(params?: Afunc_Params_Interface) {
   // Main
   if (message !== undefined && num !== undefined) {
     function defaultcall() {
-      console.log("before main");
+      console.log("Main Begin");
       console.log(message, num);
-      console.log("Main function");
+      console.log("Main End");
     }
     overrideFuncsArray.splice(0, 0, defaultcall);
   }
@@ -78,18 +102,15 @@ function Afunc(params?: Afunc_Params_Interface) {
   }
 }
 try {
-  Afunc({ num: 2 });
+  const num = 5;
+  const message = "al";
+  Afunc({ message, num });
 } catch (e) {
-  console.error(e.stack);
-}
-
-function test(params: string): number;
-function test(params: number): string;
-
-function test(params: string | number): string | number {
-  if (typeof params === "string") {
-    return params.length;
-  } else {
-    return params.toString();
+  const error = JSSystemTryBecomeClass<IllegalArgumentException>({
+    object: e,
+    className: "IllegalArgumentException",
+  });
+  if (error) {
+    console.log(error.stack);
   }
 }
