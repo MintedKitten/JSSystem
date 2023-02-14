@@ -15,7 +15,10 @@ class JSError extends Throwable {
     { classFunction, message }: Throwable_Contructor_Interface,
     serialBigInt?: Serial_BigInt
   ) {
-    super({ classFunction: JSError, message: message }, serialBigInt);
+    super(
+      { classFunction: classFunction ?? JSError, message: message },
+      serialBigInt
+    );
   }
 }
 export { JSError };

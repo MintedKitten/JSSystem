@@ -15,7 +15,10 @@ class JSException extends Throwable {
     { classFunction, message }: Throwable_Contructor_Interface,
     serialBigInt?: Serial_BigInt
   ) {
-    super({ classFunction: JSException, message: message }, serialBigInt);
+    super(
+      { classFunction: classFunction ?? JSException, message: message },
+      serialBigInt
+    );
   }
 }
 export { JSException };

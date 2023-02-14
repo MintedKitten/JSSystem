@@ -17,7 +17,10 @@ class ClassNotFoundError extends JSError {
     serialBigInt?: Serial_BigInt
   ) {
     super(
-      { classFunction: ClassNotFoundError, message: message },
+      {
+        classFunction: classFunction ?? ClassNotFoundError,
+        message: message,
+      },
       serialBigInt
     );
   }

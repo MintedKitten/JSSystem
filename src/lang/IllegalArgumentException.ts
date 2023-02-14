@@ -17,7 +17,10 @@ class IllegalArgumentException extends JSException {
     serialBigInt?: Serial_BigInt
   ) {
     super(
-      { classFunction: IllegalArgumentException, message: message },
+      {
+        classFunction: classFunction ?? IllegalArgumentException,
+        message: message,
+      },
       serialBigInt
     );
   }
