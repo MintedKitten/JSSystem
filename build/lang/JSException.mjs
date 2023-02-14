@@ -6,7 +6,10 @@ class JSException extends Throwable {
    * @param message {string} The message in details.
    */
   constructor({ classFunction, message }, serialBigInt) {
-    super({ classFunction: JSException, message }, serialBigInt);
+    super(
+      { classFunction: classFunction ?? JSException, message },
+      serialBigInt
+    );
   }
 }
 export {

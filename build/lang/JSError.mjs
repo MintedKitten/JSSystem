@@ -6,7 +6,10 @@ class JSError extends Throwable {
    * @param message {string} The message in details
    */
   constructor({ classFunction, message }, serialBigInt) {
-    super({ classFunction: JSError, message }, serialBigInt);
+    super(
+      { classFunction: classFunction ?? JSError, message },
+      serialBigInt
+    );
   }
 }
 export {

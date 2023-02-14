@@ -7,7 +7,10 @@ class IllegalArgumentException extends JSException {
    */
   constructor({ classFunction, message }, serialBigInt) {
     super(
-      { classFunction: IllegalArgumentException, message },
+      {
+        classFunction: classFunction ?? IllegalArgumentException,
+        message
+      },
       serialBigInt
     );
   }

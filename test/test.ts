@@ -9,29 +9,23 @@ import { TestClass as TestClass2 } from "./class2/TestClass";
 const test1 = new TestClass1();
 const test2 = new TestClass2();
 
-console.log(test1.toString());
-console.log(test1.hashCode());
-console.log(test1.canCall("test"));
-console.log(test1.canCall("me"));
-console.log(test2.canCall("test"));
+// function Afunc1() {
+//   console.log("before 2");
+//   Afunc2("thing");
+//   console.log("Override empty");
+// }
 
-function Afunc1() {
-  console.log("before 2");
-  Afunc2("thing");
-  console.log("Override empty");
-}
+// function Afunc2(message: string) {
+//   console.log("before 3");
+//   Afunc3(message, 1234);
+//   console.log("Override only message");
+// }
 
-function Afunc2(message: string) {
-  console.log("before 3");
-  Afunc3(message, 1234);
-  console.log("Override only message");
-}
-
-function Afunc3(message: string, num: number) {
-  console.log("Main Begin");
-  console.log(message, num);
-  console.log("Main End");
-}
+// function Afunc3(message: string, num: number) {
+//   console.log("Main Begin");
+//   console.log(message, num);
+//   console.log("Main End");
+// }
 
 interface Afunc_Params_Interface {
   message?: string | undefined;

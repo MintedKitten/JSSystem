@@ -7,7 +7,10 @@ class ClassNotFoundError extends JSError {
    */
   constructor({ classFunction, message }, serialBigInt) {
     super(
-      { classFunction: ClassNotFoundError, message },
+      {
+        classFunction: classFunction ?? ClassNotFoundError,
+        message
+      },
       serialBigInt
     );
   }

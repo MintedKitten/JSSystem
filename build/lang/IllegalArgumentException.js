@@ -30,7 +30,10 @@ class IllegalArgumentException extends import_JSException.JSException {
    */
   constructor({ classFunction, message }, serialBigInt) {
     super(
-      { classFunction: IllegalArgumentException, message },
+      {
+        classFunction: classFunction ?? IllegalArgumentException,
+        message
+      },
       serialBigInt
     );
   }

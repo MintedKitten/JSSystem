@@ -29,7 +29,10 @@ class JSException extends import_Throwable.Throwable {
    * @param message {string} The message in details.
    */
   constructor({ classFunction, message }, serialBigInt) {
-    super({ classFunction: JSException, message }, serialBigInt);
+    super(
+      { classFunction: classFunction ?? JSException, message },
+      serialBigInt
+    );
   }
 }
 // Annotate the CommonJS export names for ESM import in node:
