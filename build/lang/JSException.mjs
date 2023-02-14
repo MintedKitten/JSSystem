@@ -5,8 +5,8 @@ class JSException extends Throwable {
    * @param classFunction {Function} The class or arrow class of the throwable. Only for class inheritance.
    * @param message {string} The message in details.
    */
-  constructor({ classFunction, message }) {
-    super({ classFunction: JSException, message });
+  constructor({ classFunction, message }, serialBigInt) {
+    super({ classFunction: JSException, message }, serialBigInt);
   }
 }
 export {

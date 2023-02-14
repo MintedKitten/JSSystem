@@ -7,6 +7,10 @@ import { v4 as uuidv4 } from "uuid";
  */
 const __inner_serial_bigint = Random_Serial_BigInt();
 
+interface Serial_BigInt {
+  serialBigInt: bigint;
+}
+
 /**
  * JSS Object Class. The superclass of every class
  * @class JSS.lang.JSObject
@@ -35,8 +39,8 @@ class JSObject {
    * Recommended to enter unique serial bigint. Or use @function{Random_Serial_BigInt} to randomly generated one.
    * @param serialBigInt {bigint} The serial bigint of the object.
    */
-  constructor(serialBigInt: bigint = __inner_serial_bigint) {
-    this.#Class_Serial = serialBigInt;
+  constructor(serialBigInt?: Serial_BigInt) {
+    this.#Class_Serial = serialBigInt?.serialBigInt ?? __inner_serial_bigint;
     this.#Class_Object = JSSystem.addClass(
       this.#Class_Name,
       this.#Class_Serial
@@ -81,3 +85,4 @@ class JSObject {
 }
 
 export { JSObject };
+export type { Serial_BigInt };

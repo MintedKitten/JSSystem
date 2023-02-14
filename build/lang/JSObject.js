@@ -48,8 +48,8 @@ class JSObject {
    * Recommended to enter unique serial bigint. Or use @function{Random_Serial_BigInt} to randomly generated one.
    * @param serialBigInt {bigint} The serial bigint of the object.
    */
-  constructor(serialBigInt = __inner_serial_bigint) {
-    this.#Class_Serial = serialBigInt;
+  constructor(serialBigInt) {
+    this.#Class_Serial = serialBigInt?.serialBigInt ?? __inner_serial_bigint;
     this.#Class_Object = import_System.JSSystem.addClass(
       this.#Class_Name,
       this.#Class_Serial

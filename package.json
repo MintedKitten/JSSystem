@@ -1,6 +1,6 @@
 {
   "name": "jssystem",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "JavaScript System Namespace",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -8,12 +8,9 @@
   "scripts": {
     "test": "npm run test:build && npm run test:run",
     "prepublish": "npm run build && npm run declaration",
-    "build": "npm run build:cjs && npm run build:esm && npm run clean",
+    "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "build-esbuild -s src -o build -f cjs",
     "build:esm": "build-esbuild -s src -o build -f esm -d false",
-    "clean": "npm run clean:linux || npm run clean:windows",
-    "clean:linux": "rm -rf tempsrc",
-    "clean:windows": "rmdir /s /q tempsrc",
     "declaration": "npx tsc --project tsconfig.json",
     "test:build": "build-esbuild -s test -o testBuild -f esm",
     "test:run": "node testBuild/test.mjs"

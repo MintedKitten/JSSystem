@@ -1,4 +1,4 @@
-import { JSObject } from "./JSObject";
+import { JSObject, Serial_BigInt } from "./JSObject";
 /**
  * JSS Throwable class. The base of every throwable class in JSS
  * @class JSS.lang.Throwable
@@ -26,8 +26,11 @@ class Throwable extends JSObject {
    * @param classFunction {Function} The class or arrow class of the throwable. Only for class inheritance.
    * @param message {string} The message in details - Optional
    */
-  constructor({ classFunction, message }: Throwable_Contructor_Interface) {
-    super();
+  constructor(
+    { classFunction, message }: Throwable_Contructor_Interface,
+    serialBigInt?: Serial_BigInt
+  ) {
+    super(serialBigInt);
     this.#classFunctionCall = classFunction ?? Throwable;
     if (message !== undefined && message !== "") {
       this.#detailMessage = message;

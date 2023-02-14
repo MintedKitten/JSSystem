@@ -34,8 +34,8 @@ class Throwable extends import_JSObject.JSObject {
    * @param classFunction {Function} The class or arrow class of the throwable. Only for class inheritance.
    * @param message {string} The message in details - Optional
    */
-  constructor({ classFunction, message }) {
-    super();
+  constructor({ classFunction, message }, serialBigInt) {
+    super(serialBigInt);
     this.#classFunctionCall = classFunction ?? Throwable;
     if (message !== void 0 && message !== "") {
       this.#detailMessage = message;

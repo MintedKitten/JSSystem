@@ -28,8 +28,11 @@ class ClassNotFoundError extends import_JSError.JSError {
    * @param classFunction {Function} The class or arrow class of the throwable. Only for class inheritance.
    * @param message {string} The message in details
    */
-  constructor({ classFunction, message }) {
-    super({ classFunction: ClassNotFoundError, message });
+  constructor({ classFunction, message }, serialBigInt) {
+    super(
+      { classFunction: ClassNotFoundError, message },
+      serialBigInt
+    );
   }
 }
 // Annotate the CommonJS export names for ESM import in node:
