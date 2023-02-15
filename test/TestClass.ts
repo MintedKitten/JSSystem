@@ -4,6 +4,10 @@ class TestClass extends JSObject {
   constructor() {
     super();
   }
+
+  public test() {
+    console.log("test");
+  }
 }
 
 export { TestClass };

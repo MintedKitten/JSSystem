@@ -64,6 +64,14 @@ class JSObject {
   isEquals(ob) {
     return this === ob;
   }
+  /**
+   * Check whether this object has the method.
+   * @param methodName {string} The name of the method to check the existance of.
+   * @returns {boolean} Return true, if the method exists; Otherwise false.
+   */
+  canCall(methodName) {
+    return typeof this[methodName] === "function";
+  }
 }
 export {
   JSObject

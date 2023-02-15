@@ -3,6 +3,9 @@ class TestClass extends JSObject {
   constructor() {
     super();
   }
+  test() {
+    console.log("test");
+  }
 }
 export {
   TestClass

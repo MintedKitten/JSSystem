@@ -7,6 +7,8 @@ import { TestClass } from "./TestClass.mjs";
 const newob = new TestClass();
 console.log(newob.toString());
 console.log(newob.hashCode());
+console.log(newob.canCall("test"));
+console.log(newob.canCall("me"));
 const classes = JSSystemGetAllClasses();
 for (const _class of classes) {
   console.log(_class.getName());

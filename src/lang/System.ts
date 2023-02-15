@@ -79,6 +79,7 @@ class System {
   public tryBecomeClass<T>({
     object,
     className,
+    strict,
   }: Try_Become_Class_Interface): T | undefined {
     try {
       const jsclasses = this.getClasses(className);
@@ -87,6 +88,11 @@ class System {
         if (object.getClass() === jsclass) {
           isCompatible = true;
         }
+        if (strict === false) {
+          if (jsclass.isEquals(object.getClass())) {
+            isCompatible = true;
+          }
+        }
       });
       if (isCompatible) {
         return object as T;
@@ -94,7 +100,7 @@ class System {
         throw new Error("Not Convertable, Throw new Error to be catch");
       }
     } catch (e) {
-      // Either error from not convertable, or object isn't a JSObject.
+      // Either error from not convertable, or object isn't compatible with JSObject.
       return undefined;
     }
   }
@@ -102,7 +108,10 @@ class System {
 interface Try_Become_Class_Interface {
   // rome-ignore lint/suspicious/noExplicitAny: Really anything can be tried.
   object: any;
+  // The class name to try to convert to
   className: string;
+  // If the convertion must be strict; true: Class object must is the same, false: Either class object is the same, or the name and serial is be equal.
+  strict?: boolean;
 }
 /**
  * The interface for @function{Random_Serial_BigInt}
@@ -180,8 +189,13 @@ function JSSystemGetAllClasses(): JSClass[] {
 function JSSystemTryBecomeClass<T>({
   object,
   className,
+  strict,
 }: Try_Become_Class_Interface): ReturnType<typeof JSSystem.tryBecomeClass<T>> {
-  return JSSystem.tryBecomeClass<T>({ object: object, className: className });
+  return JSSystem.tryBecomeClass<T>({
+    object: object,
+    className: className,
+    strict: strict,
+  });
 }
 export {
   JSSystem,

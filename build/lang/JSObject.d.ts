@@ -39,6 +39,12 @@ declare class JSObject {
      * @returns {boolean} Return true, if it is the same object. Otherwise false.
      */
     isEquals(ob: JSObject): boolean;
+    /**
+     * Check whether this object has the method.
+     * @param methodName {string} The name of the method to check the existance of.
+     * @returns {boolean} Return true, if the method exists; Otherwise false.
+     */
+    canCall(methodName: string): boolean;
 }
 export { JSObject };
 export type { Serial_BigInt };
