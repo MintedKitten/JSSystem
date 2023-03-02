@@ -70,7 +70,18 @@ class JSObject {
    * @returns {boolean} Return true, if the method exists; Otherwise false.
    */
   canCall(methodName) {
-    return typeof this[methodName] === "function";
+    let canBeCall = false;
+    const objectKeys = Object.keys(
+      this
+    );
+    for (const key of objectKeys) {
+      if (key === methodName) {
+        if (typeof this[key] === "function") {
+          canBeCall = true;
+        }
+      }
+    }
+    return canBeCall;
   }
 }
 export {

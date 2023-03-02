@@ -1,4 +1,4 @@
-import { JSObject } from "../build";
+import { JSObject } from "../../build";
 
 class TestClass extends JSObject {
   constructor() {
@@ -6,7 +6,7 @@ class TestClass extends JSObject {
   }
 
   public test() {
-    console.log("test");
+    console.log("test1");
   }
 }
 

@@ -3,19 +3,17 @@ import {
   JSSystemGetAllClasses,
   JSSystemTryBecomeClass,
 } from "../build";
-import { TestClass } from "./TestClass";
+import { TestClass as TestClass1 } from "./class1/TestClass";
+import { TestClass as TestClass2 } from "./class2/TestClass";
 
-const newob = new TestClass();
+const test1 = new TestClass1();
+const test2 = new TestClass2();
 
-console.log(newob.toString());
-console.log(newob.hashCode());
-console.log(newob.canCall("test"));
-console.log(newob.canCall("me"));
-
-const classes = JSSystemGetAllClasses();
-for (const _class of classes) {
-  console.log(_class.getName());
-}
+console.log(test1.toString());
+console.log(test1.hashCode());
+console.log(test1.canCall("test"));
+console.log(test1.canCall("me"));
+console.log(test2.canCall("test"));
 
 function Afunc1() {
   console.log("before 2");

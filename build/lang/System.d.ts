@@ -36,11 +36,12 @@ declare class System {
      * @param .className {string} The name of the registered class.
      * @returns {boolean | undefined} If object can be converted, will return the object after converted; otherwise return undefined.
      */
-    tryBecomeClass<T>({ object, className, }: Try_Become_Class_Interface): T | undefined;
+    tryBecomeClass<T>({ object, className, strict, }: Try_Become_Class_Interface): T | undefined;
 }
 interface Try_Become_Class_Interface {
     object: any;
     className: string;
+    strict?: boolean;
 }
 /**
  * The interface for @function{Random_Serial_BigInt}
@@ -101,6 +102,6 @@ declare function JSSystemGetAllClasses(): JSClass[];
  * @param .className {string} The name of the registered class.
  * @returns {boolean | undefined} If object can be converted, will return the object after converted; otherwise return undefined.
  */
-declare function JSSystemTryBecomeClass<T>({ object, className, }: Try_Become_Class_Interface): ReturnType<typeof JSSystem.tryBecomeClass<T>>;
+declare function JSSystemTryBecomeClass<T>({ object, className, strict, }: Try_Become_Class_Interface): ReturnType<typeof JSSystem.tryBecomeClass<T>>;
 export { JSSystem, JSSystemGetClasses, JSSystemGetClass, JSSystemGetAllClasses, JSSystemTryBecomeClass, Random_Serial_BigInt, };
 export type { Random_Serial_BigInt_Interface };

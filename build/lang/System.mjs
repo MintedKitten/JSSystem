@@ -69,7 +69,8 @@ class System {
    */
   tryBecomeClass({
     object,
-    className
+    className,
+    strict
   }) {
     try {
       const jsclasses = this.getClasses(className);
@@ -77,6 +78,11 @@ class System {
       jsclasses.forEach(function(jsclass) {
         if (object.getClass() === jsclass) {
           isCompatible = true;
+        }
+        if (strict === false) {
+          if (jsclass.isEquals(object.getClass())) {
+            isCompatible = true;
+          }
         }
       });
       if (isCompatible) {
@@ -108,9 +114,14 @@ function JSSystemGetAllClasses() {
 }
 function JSSystemTryBecomeClass({
   object,
-  className
+  className,
+  strict
 }) {
-  return JSSystem.tryBecomeClass({ object, className });
+  return JSSystem.tryBecomeClass({
+    object,
+    className,
+    strict
+  });
 }
 export {
   JSSystem,
