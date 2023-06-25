@@ -77,7 +77,7 @@ function Afunc(params) {
 try {
   const num = 5;
   const message = "al";
-  Afunc({ message });
+  Afunc({ num });
 } catch (e) {
   const error = JSSystemTryBecomeClass({
     object: e,

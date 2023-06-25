@@ -44,6 +44,7 @@ interface Afunc_Params_Interface {
  * A tsdocs
  */
 function Afunc(): void;
+function Afunc({}): void;
 /**
  * C tsdocs
  * @param .message {string}
@@ -108,7 +109,7 @@ function Afunc(params?: Afunc_Params_Interface): void {
 try {
   const num = 5;
   const message = "al";
-  Afunc({ message });
+  Afunc({ num });
 } catch (e) {
   const error = JSSystemTryBecomeClass<IllegalArgumentException>({
     object: e,

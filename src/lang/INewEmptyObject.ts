@@ -4,7 +4,7 @@
 */
 interface INewEmptyObject {
   /**
-   * Create a new 'Empty' object of this class. No parameter. Replace return type to class.
+   * Create a new 'Empty' object of this class. No parameter. Replace return type with class.
    * @return {ThisType<this>} An 'Empty' object of this class.
    */
   newEmptyObject(): ThisType<this>;
