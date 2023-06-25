@@ -1,5 +1,5 @@
 /**
- * The interface for creating a class with function newEmptyObject. The object is the instnace of a class with value of 0 input.
+ * The interface for creating a class with function newEmptyObject. The object is the instance of a class with value of 0 input.
  * @interface JSS.lang.INewEmptyObject
 */
 interface INewEmptyObject {

@@ -13,9 +13,11 @@ import { JSError } from "./lang/JSError.mjs";
 import { JSException } from "./lang/JSException.mjs";
 import { Throwable } from "./lang/Throwable.mjs";
 import { UnsupportedOperationException } from "./lang/UnsupportedOperationException.mjs";
+import { CloneNotSupportedException } from "./lang/CloneNotSupportedException.mjs";
 new JSObject();
 export {
   ClassNotFoundError,
+  CloneNotSupportedException,
   IllegalArgumentException,
   JSClass,
   JSError,

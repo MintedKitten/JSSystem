@@ -10,9 +10,10 @@ declare class System {
      */
     constructor();
     /**
-     * When an object of a class is created, that class will attempt to register a class object by passing a class name into this function.
+     * When an object of a class is created, that class will attempt to register a class object by passing a class name and its serial bigint into this function.
      * If that class name has never been register, this will create a new class object, store it, and return it. If that class name has been register, the corresponding class object will be return.
      * @param className {string} The name of the class. Usually retrieve from the private object {#Class_Name = this.constructor.name} from the baseclass.
+     * @param serialBigint {bigint} The serial bigint of the class. Usually retrieve from the private object {#Class_Serial} from the baseclass.
      * @returns The class object in Object {JSClass}
      */
     addClass(className: string, serialBigint: bigint): JSClass;

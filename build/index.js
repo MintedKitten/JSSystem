@@ -19,6 +19,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var src_exports = {};
 __export(src_exports, {
   ClassNotFoundError: () => import_ClassNotFoundError.ClassNotFoundError,
+  CloneNotSupportedException: () => import_CloneNotSupportedException.CloneNotSupportedException,
   IllegalArgumentException: () => import_IllegalArgumentException.IllegalArgumentException,
   JSClass: () => import_JSClass.JSClass,
   JSError: () => import_JSError.JSError,
@@ -42,10 +43,12 @@ var import_JSError = require("./lang/JSError");
 var import_JSException = require("./lang/JSException");
 var import_Throwable = require("./lang/Throwable");
 var import_UnsupportedOperationException = require("./lang/UnsupportedOperationException");
+var import_CloneNotSupportedException = require("./lang/CloneNotSupportedException");
 new import_JSObject.JSObject();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   ClassNotFoundError,
+  CloneNotSupportedException,
   IllegalArgumentException,
   JSClass,
   JSError,

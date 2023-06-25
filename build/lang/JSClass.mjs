@@ -7,7 +7,7 @@ function getInnerJSClass() {
 class JSClass {
   #Class_Name = this.constructor.name;
   #Class_Object = getInnerJSClass;
-  #ClassName = "";
+  #ClassName;
   #Unique_Serial_BigInt;
   constructor({ className, serial }) {
     this.#Unique_Serial_BigInt = serial;

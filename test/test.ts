@@ -14,6 +14,11 @@ const test3 = new TestClass3();
 console.log("Raw: " + test3.name);
 const mttest3 = test3.newEmptyObject();
 console.log("newEmptyObject: " + mttest3.name);
+test3.name = "test";
+test3.email = "test@email";
+console.log("test3: " + test3.name);
+const test4 = test3.clone();
+console.log("test4: " + test4.name);
 
 console.log("Module:" + process.env.npm_package_version);
 

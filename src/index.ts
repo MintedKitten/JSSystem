@@ -20,6 +20,8 @@ import { JSException } from "./lang/JSException";
 import { Throwable } from "./lang/Throwable";
 import { INewEmptyObject } from "./lang/INewEmptyObject";
 import { UnsupportedOperationException } from "./lang/UnsupportedOperationException";
+import { ICloneable } from "./lang/ICloneable";
+import { CloneNotSupportedException } from "./lang/CloneNotSupportedException";
 
 /**
  * Registering Object in System
@@ -39,5 +41,6 @@ export {
   ClassNotFoundError,
   IllegalArgumentException,
   UnsupportedOperationException,
+  CloneNotSupportedException,
 };
-export type { Random_Serial_BigInt_Interface, INewEmptyObject };
+export type { Random_Serial_BigInt_Interface, INewEmptyObject, ICloneable };

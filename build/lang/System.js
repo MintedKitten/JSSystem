@@ -41,7 +41,7 @@ var import_big_integer = __toESM(require("big-integer"));
 var import_ClassNotFoundError = require("./ClassNotFoundError");
 class System {
   /**
-   * Any new class that is created with JSObject will create a class object and store it inhere.
+   * Any new class that is created with JSObject will create a class object and store it in here.
    */
   #JSClasses = [];
   /**
@@ -50,9 +50,10 @@ class System {
   constructor() {
   }
   /**
-   * When an object of a class is created, that class will attempt to register a class object by passing a class name into this function.
+   * When an object of a class is created, that class will attempt to register a class object by passing a class name and its serial bigint into this function.
    * If that class name has never been register, this will create a new class object, store it, and return it. If that class name has been register, the corresponding class object will be return.
    * @param className {string} The name of the class. Usually retrieve from the private object {#Class_Name = this.constructor.name} from the baseclass.
+   * @param serialBigint {bigint} The serial bigint of the class. Usually retrieve from the private object {#Class_Serial} from the baseclass.
    * @returns The class object in Object {JSClass}
    */
   addClass(className, serialBigint) {
@@ -117,7 +118,7 @@ class System {
         if (object.getClass() === jsclass) {
           isCompatible = true;
         }
-        if (strict === false) {
+        if (strict !== true) {
           if (jsclass.isEquals(object.getClass())) {
             isCompatible = true;
           }
