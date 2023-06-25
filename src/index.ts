@@ -19,6 +19,7 @@ import { JSError } from "./lang/JSError";
 import { JSException } from "./lang/JSException";
 import { Throwable } from "./lang/Throwable";
 import { INewEmptyObject } from "./lang/INewEmptyObject";
+import { UnsupportedOperationException } from "./lang/UnsupportedOperationException";
 
 /**
  * Registering Object in System
@@ -37,5 +38,6 @@ export {
   JSSystemGetClass,
   ClassNotFoundError,
   IllegalArgumentException,
+  UnsupportedOperationException,
 };
 export type { Random_Serial_BigInt_Interface, INewEmptyObject };
