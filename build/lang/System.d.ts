@@ -44,9 +44,10 @@ interface Try_Become_Class_Interface {
     strict?: boolean;
 }
 /**
- * The interface for @function{Random_Serial_BigInt}
+ * The interface for function {Random_Serial_BigInt}
  * @param min Minimum range inclusive - Optional - Default: -1e100
  * @param max Maximum range inclusive - Optional - Default: 1e100
+ * @see {@link Random_Serial_BigInt}
  */
 interface Random_Serial_BigInt_Interface {
     /**
@@ -60,8 +61,7 @@ interface Random_Serial_BigInt_Interface {
 }
 /**
  * Randomly generated bigint. Made for class serial bigint.
- * @function JSS.Random_Serial_BigInt
- * @param options {Random_Serial_BigInt_Interface} The option for @function{Random_Serial_BigInt}
+ * @param options {Random_Serial_BigInt_Interface} The option for function Random_Serial_BigInt
  * @returns {bigint} A bigint
  */
 declare function Random_Serial_BigInt(options?: Random_Serial_BigInt_Interface): bigint;
@@ -71,7 +71,6 @@ declare function Random_Serial_BigInt(options?: Random_Serial_BigInt_Interface):
 declare const JSSystem: System;
 /**
  * Wrapping JSSystem.getClasses for public use.
- * @function JSS.JSSystemGetClasses
  * @throws {ClassNotFoundError} Class Not Found
  * @param className {string} The name of the registered class that you are looking for.
  * @returns {JSClass[]} The array of class object where the class name is the same as the lookup registered class name.
@@ -81,7 +80,6 @@ declare function JSSystemGetClasses(className: string): JSClass[];
  * Wrapping JSSystemGetClass for public use.
  * Call JSSystemGetClasses and return the first index.
  * @see {@link JSSystemGetClasses}
- * @function JSS.JSSystemGetClass
  * @throws {ClassNotFoundError} Class Not Found
  * @param className {string} The name of the registered class that you are looking for.
  * @returns {JSClass} The class object where the class name is the same as the lookup registered class name.
@@ -89,7 +87,6 @@ declare function JSSystemGetClasses(className: string): JSClass[];
 declare function JSSystemGetClass(className: string): JSClass;
 /**
  * Wrapping JSSystem.getAllClasses for public use.
- * @function JSS.JSSystemGetAllClasses
  * @returns {JSClass[]} The array of every registered class objects.
  */
 declare function JSSystemGetAllClasses(): JSClass[];

@@ -12,6 +12,7 @@ import { IllegalArgumentException } from "./lang/IllegalArgumentException.mjs";
 import { JSError } from "./lang/JSError.mjs";
 import { JSException } from "./lang/JSException.mjs";
 import { Throwable } from "./lang/Throwable.mjs";
+import { JSObjectWithEmpty } from "./lang/JSObjectWithEmpty.mjs";
 new JSObject();
 export {
   ClassNotFoundError,
@@ -20,6 +21,7 @@ export {
   JSError,
   JSException,
   JSObject,
+  JSObjectWithEmpty,
   JSSystemGetAllClasses,
   JSSystemGetClass,
   JSSystemGetClasses,

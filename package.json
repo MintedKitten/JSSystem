@@ -7,12 +7,12 @@
   "module": "./build/index.mjs",
   "scripts": {
     "test": "npm run test:build && npm run test:run",
-    "prepublish": "npm run build && npm run declaration",
+    "prepublishOnly": "npm run build && npm run declaration",
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "npx build-esbuild -s src -o build -f cjs",
-    "build:esm": "npx build-esbuild -s src -o build -f esm -d false",
+    "build:esm": "npx build-esbuild -s src -o build -f esm -x mjs -d false",
     "declaration": "npx tsc --project tsconfig.json",
-    "test:build": "npx build-esbuild -s test -o testBuild -f esm",
+    "test:build": "npx build-esbuild -s test -o testBuild -f esm -x mjs",
     "test:run": "node testBuild/test.mjs"
   },
   "repository": {
@@ -28,6 +28,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.2.5",
+    "@types/node": "^18.16.18",
     "@types/object-hash": "^3.0.2",
     "@types/uuid": "^9.0.0",
     "jest": "^29.3.1",

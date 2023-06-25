@@ -18,6 +18,8 @@ import { IllegalArgumentException } from "./lang/IllegalArgumentException";
 import { JSError } from "./lang/JSError";
 import { JSException } from "./lang/JSException";
 import { Throwable } from "./lang/Throwable";
+import { JSObjectWithEmpty } from "./lang/JSObjectWithEmpty";
+import { INewEmptyObject } from "./lang/INewEmptyObject";
 
 /**
  * Registering Object in System
@@ -36,5 +38,6 @@ export {
   JSSystemGetClass,
   ClassNotFoundError,
   IllegalArgumentException,
+  JSObjectWithEmpty,
 };
-export type { Random_Serial_BigInt_Interface };
+export type { Random_Serial_BigInt_Interface, INewEmptyObject };

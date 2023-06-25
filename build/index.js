@@ -24,6 +24,7 @@ __export(src_exports, {
   JSError: () => import_JSError.JSError,
   JSException: () => import_JSException.JSException,
   JSObject: () => import_JSObject.JSObject,
+  JSObjectWithEmpty: () => import_JSObjectWithEmpty.JSObjectWithEmpty,
   JSSystemGetAllClasses: () => import_System.JSSystemGetAllClasses,
   JSSystemGetClass: () => import_System.JSSystemGetClass,
   JSSystemGetClasses: () => import_System.JSSystemGetClasses,
@@ -40,6 +41,7 @@ var import_IllegalArgumentException = require("./lang/IllegalArgumentException")
 var import_JSError = require("./lang/JSError");
 var import_JSException = require("./lang/JSException");
 var import_Throwable = require("./lang/Throwable");
+var import_JSObjectWithEmpty = require("./lang/JSObjectWithEmpty");
 new import_JSObject.JSObject();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
@@ -49,6 +51,7 @@ new import_JSObject.JSObject();
   JSError,
   JSException,
   JSObject,
+  JSObjectWithEmpty,
   JSSystemGetAllClasses,
   JSSystemGetClass,
   JSSystemGetClasses,

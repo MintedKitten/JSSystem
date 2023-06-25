@@ -1,36 +1,45 @@
 import {
   IllegalArgumentException,
   JSSystemGetAllClasses,
+  JSSystemGetClass,
   JSSystemTryBecomeClass,
 } from "../build";
 import { TestClass as TestClass1 } from "./class1/TestClass";
 import { TestClass as TestClass2 } from "./class2/TestClass";
+import { TestClass as TestClass3 } from "./class3/TestClass";
 
 const test1 = new TestClass1();
 const test2 = new TestClass2();
+const test3 = new TestClass3();
+console.log("Raw: " + test3.name);
+const mttest3 = test3.newEmptyObject();
+console.log("newEmptyObject: " + mttest3.name);
 
-// function Afunc1() {
-//   console.log("before 2");
-//   Afunc2("thing");
-//   console.log("Override empty");
-// }
+console.log("Module:" + process.env.npm_package_version);
 
-// function Afunc2(message: string) {
-//   console.log("before 3");
-//   Afunc3(message, 1234);
-//   console.log("Override only message");
-// }
+function Afunc1() {
+  console.log("before 2");
+  Afunc2("thing");
+  console.log("Override empty");
+}
 
-// function Afunc3(message: string, num: number) {
-//   console.log("Main Begin");
-//   console.log(message, num);
-//   console.log("Main End");
-// }
+function Afunc2(message: string) {
+  console.log("before 3");
+  Afunc3(message, 1234);
+  console.log("Override only message");
+}
+
+function Afunc3(message: string, num: number) {
+  console.log("Main Begin");
+  console.log(message, num);
+  console.log("Main End");
+}
 
 interface Afunc_Params_Interface {
   message?: string | undefined;
   num?: number | undefined;
 }
+
 /**
  * A tsdocs
  */
@@ -95,10 +104,11 @@ function Afunc(params?: Afunc_Params_Interface): void {
     });
   }
 }
+
 try {
   const num = 5;
   const message = "al";
-  Afunc({ message, num });
+  Afunc({ message });
 } catch (e) {
   const error = JSSystemTryBecomeClass<IllegalArgumentException>({
     object: e,

@@ -45,8 +45,9 @@ class JSObject {
   /**
    * Contrustor. Object is superclass, so there's no super class contrustor to be called.
    * Every subclass should create a unique serial bigint, to avoid the same class name collision.
-   * Recommended to enter unique serial bigint. Or use @function{Random_Serial_BigInt} to randomly generated one.
+   * Recommended to enter unique serial bigint. Or use Random_Serial_BigInt to randomly generated one.
    * @param serialBigInt {bigint} The serial bigint of the object.
+   * @see Random_Serial_BigInt
    */
   constructor(serialBigInt) {
     this.#Class_Serial = serialBigInt?.serialBigInt ?? __inner_serial_bigint;
