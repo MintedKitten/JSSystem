@@ -16,22 +16,22 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var ClassNotFoundError_exports = {};
-__export(ClassNotFoundError_exports, {
-  ClassNotFoundError: () => ClassNotFoundError
+var UnsupportedOperationException_exports = {};
+__export(UnsupportedOperationException_exports, {
+  UnsupportedOperationException: () => UnsupportedOperationException
 });
-module.exports = __toCommonJS(ClassNotFoundError_exports);
-var import_JSError = require("./JSError");
-class ClassNotFoundError extends import_JSError.JSError {
+module.exports = __toCommonJS(UnsupportedOperationException_exports);
+var import_JSException = require("./JSException");
+class UnsupportedOperationException extends import_JSException.JSException {
   /**
-   * The constructor of class ClassNotFoundError. When class lookup in JSSystem found nothing.
+   * The constructor of class UnsupportedOperationException. When the method in class is not supported.
    * @param classFunction {Function} The class or arrow class of the throwable. Only for class inheritance.
    * @param message {string} The message in details
    */
   constructor({ classFunction, message }, serialBigInt) {
     super(
       {
-        classFunction: classFunction ?? ClassNotFoundError,
+        classFunction: classFunction ?? UnsupportedOperationException,
         message
       },
       serialBigInt
@@ -40,5 +40,5 @@ class ClassNotFoundError extends import_JSError.JSError {
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  ClassNotFoundError
+  UnsupportedOperationException
 });

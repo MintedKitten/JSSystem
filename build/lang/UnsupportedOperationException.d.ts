@@ -2,16 +2,16 @@ import { JSException } from "./JSException";
 import { Serial_BigInt } from "./JSObject";
 import { Throwable_Contructor_Interface } from "./Throwable";
 /**
- * The JS Exception for when an argument was passed incorrectly
- * @class JSS.lang.IllegalArgumentException
+ * The JS Exception for when an operation is not supported.
+ * @class JSS.lang.UnsupportedOperationException
  * @see JSSystemGetClasses
  */
-declare class IllegalArgumentException extends JSException {
+declare class UnsupportedOperationException extends JSException {
     /**
-     * The constructor of class IllegalArgumentException. When argument was passed incorrectly.
+     * The constructor of class UnsupportedOperationException. When the method in class is not supported.
      * @param classFunction {Function} The class or arrow class of the throwable. Only for class inheritance.
      * @param message {string} The message in details
      */
     constructor({ classFunction, message }: Throwable_Contructor_Interface, serialBigInt?: Serial_BigInt);
 }
-export { IllegalArgumentException };
+export { UnsupportedOperationException };

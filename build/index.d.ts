@@ -10,5 +10,6 @@ import { JSError } from "./lang/JSError";
 import { JSException } from "./lang/JSException";
 import { Throwable } from "./lang/Throwable";
 import { INewEmptyObject } from "./lang/INewEmptyObject";
-export { JSObject, JSClass, JSSystemGetClasses, JSSystemGetAllClasses, JSSystemTryBecomeClass, Random_Serial_BigInt, Throwable, JSError, JSException, JSSystemGetClass, ClassNotFoundError, IllegalArgumentException, };
+import { UnsupportedOperationException } from "./lang/UnsupportedOperationException";
+export { JSObject, JSClass, JSSystemGetClasses, JSSystemGetAllClasses, JSSystemTryBecomeClass, Random_Serial_BigInt, Throwable, JSError, JSException, JSSystemGetClass, ClassNotFoundError, IllegalArgumentException, UnsupportedOperationException, };
 export type { Random_Serial_BigInt_Interface, INewEmptyObject };

@@ -8,7 +8,7 @@ import { Throwable_Contructor_Interface } from "./Throwable";
  */
 declare class ClassNotFoundError extends JSError {
     /**
-     * The constructor of class ClassNotFoundError. When class lookup in JSSystem found nothing
+     * The constructor of class ClassNotFoundError. When class lookup in JSSystem found nothing.
      * @param classFunction {Function} The class or arrow class of the throwable. Only for class inheritance.
      * @param message {string} The message in details
      */

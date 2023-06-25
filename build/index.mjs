@@ -12,6 +12,7 @@ import { IllegalArgumentException } from "./lang/IllegalArgumentException.mjs";
 import { JSError } from "./lang/JSError.mjs";
 import { JSException } from "./lang/JSException.mjs";
 import { Throwable } from "./lang/Throwable.mjs";
+import { UnsupportedOperationException } from "./lang/UnsupportedOperationException.mjs";
 new JSObject();
 export {
   ClassNotFoundError,
@@ -25,5 +26,6 @@ export {
   JSSystemGetClasses,
   JSSystemTryBecomeClass,
   Random_Serial_BigInt,
-  Throwable
+  Throwable,
+  UnsupportedOperationException
 };

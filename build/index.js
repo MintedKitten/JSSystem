@@ -29,7 +29,8 @@ __export(src_exports, {
   JSSystemGetClasses: () => import_System.JSSystemGetClasses,
   JSSystemTryBecomeClass: () => import_System.JSSystemTryBecomeClass,
   Random_Serial_BigInt: () => import_System.Random_Serial_BigInt,
-  Throwable: () => import_Throwable.Throwable
+  Throwable: () => import_Throwable.Throwable,
+  UnsupportedOperationException: () => import_UnsupportedOperationException.UnsupportedOperationException
 });
 module.exports = __toCommonJS(src_exports);
 var import_JSClass = require("./lang/JSClass");
@@ -40,6 +41,7 @@ var import_IllegalArgumentException = require("./lang/IllegalArgumentException")
 var import_JSError = require("./lang/JSError");
 var import_JSException = require("./lang/JSException");
 var import_Throwable = require("./lang/Throwable");
+var import_UnsupportedOperationException = require("./lang/UnsupportedOperationException");
 new import_JSObject.JSObject();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
@@ -54,5 +56,6 @@ new import_JSObject.JSObject();
   JSSystemGetClasses,
   JSSystemTryBecomeClass,
   Random_Serial_BigInt,
-  Throwable
+  Throwable,
+  UnsupportedOperationException
 });
