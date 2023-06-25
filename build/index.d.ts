@@ -9,7 +9,6 @@ import { IllegalArgumentException } from "./lang/IllegalArgumentException";
 import { JSError } from "./lang/JSError";
 import { JSException } from "./lang/JSException";
 import { Throwable } from "./lang/Throwable";
-import { JSObjectWithEmpty } from "./lang/JSObjectWithEmpty";
 import { INewEmptyObject } from "./lang/INewEmptyObject";
-export { JSObject, JSClass, JSSystemGetClasses, JSSystemGetAllClasses, JSSystemTryBecomeClass, Random_Serial_BigInt, Throwable, JSError, JSException, JSSystemGetClass, ClassNotFoundError, IllegalArgumentException, JSObjectWithEmpty, };
+export { JSObject, JSClass, JSSystemGetClasses, JSSystemGetAllClasses, JSSystemTryBecomeClass, Random_Serial_BigInt, Throwable, JSError, JSException, JSSystemGetClass, ClassNotFoundError, IllegalArgumentException, };
 export type { Random_Serial_BigInt_Interface, INewEmptyObject };
