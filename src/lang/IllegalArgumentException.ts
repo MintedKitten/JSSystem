@@ -3,7 +3,7 @@ import { Serial_BigInt } from "./JSObject";
 import { Throwable_Contructor_Interface } from "./Throwable";
 /**
  * The JS Exception for when an argument was passed incorrectly
- * @class JSS.lang.JSClass
+ * @class JSS.lang.IllegalArgumentException
  * @see JSSystemGetClasses
  */
 class IllegalArgumentException extends JSException {
