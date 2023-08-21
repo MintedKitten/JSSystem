@@ -19,7 +19,8 @@
     "allowSyntheticDefaultImports": true,
     "outDir": "build",
     "declaration": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "experimentalDecorators": true
   },
   "exclude": ["node_modules"],
   "include": ["src/index.ts"]

@@ -4,9 +4,13 @@ import {
   INewEmptyObject,
   ICloneable,
   CloneNotSupportedException,
+  Static_Implements,
 } from "../../build";
 
-class TestClass extends JSObject implements INewEmptyObject, ICloneable {
+class TestClass
+  extends JSObject
+  implements ICloneable, Static_Implements<typeof TestClass, INewEmptyObject>
+{
   name: string;
   email: string;
 
@@ -19,15 +23,12 @@ class TestClass extends JSObject implements INewEmptyObject, ICloneable {
     temp.email = this.email;
     return temp;
   }
-  newEmptyObject(): TestClass {
+
+  static newEmptyObject(): TestClass {
     const temp = new TestClass();
     temp.name = "";
     temp.email = "";
     return temp;
-  }
-
-  public test() {
-    console.log("test3");
   }
 }
 

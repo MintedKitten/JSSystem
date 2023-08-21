@@ -9,6 +9,7 @@ import {
   JSSystemGetClass,
   JSSystemTryBecomeClass,
   Random_Serial_BigInt_Interface,
+  Static_Implements,
 } from "./lang/System";
 import { JSObject } from "./lang/JSObject";
 
@@ -43,4 +44,9 @@ export {
   UnsupportedOperationException,
   CloneNotSupportedException,
 };
-export type { Random_Serial_BigInt_Interface, INewEmptyObject, ICloneable };
+export type {
+  Random_Serial_BigInt_Interface,
+  INewEmptyObject,
+  ICloneable,
+  Static_Implements,
+};

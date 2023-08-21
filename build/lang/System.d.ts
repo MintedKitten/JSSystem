@@ -101,5 +101,8 @@ declare function JSSystemGetAllClasses(): JSClass[];
  * @returns {boolean | undefined} If object can be converted, will return the object after converted; otherwise return undefined.
  */
 declare function JSSystemTryBecomeClass<T>({ object, className, strict, }: Try_Become_Class_Interface): ReturnType<typeof JSSystem.tryBecomeClass<T>>;
+type Static_Implements<TClass extends IStaticInterface & {
+    new (...args: any[]): any;
+}, IStaticInterface> = InstanceType<TClass>;
 export { JSSystem, JSSystemGetClasses, JSSystemGetClass, JSSystemGetAllClasses, JSSystemTryBecomeClass, Random_Serial_BigInt, };
-export type { Random_Serial_BigInt_Interface };
+export type { Random_Serial_BigInt_Interface, Static_Implements };

@@ -195,6 +195,10 @@ function JSSystemTryBecomeClass<T>({
     strict: strict,
   });
 }
+type Static_Implements<
+  TClass extends IStaticInterface & { new (...args: any[]): any },
+  IStaticInterface
+> = InstanceType<TClass>;
 export {
   JSSystem,
   JSSystemGetClasses,
@@ -203,4 +207,4 @@ export {
   JSSystemTryBecomeClass,
   Random_Serial_BigInt,
 };
-export type { Random_Serial_BigInt_Interface };
+export type { Random_Serial_BigInt_Interface, Static_Implements };
