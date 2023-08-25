@@ -30,6 +30,10 @@ class TestClass
     temp.email = "";
     return temp;
   }
+
+  toJSON(): string {
+    return "dummy " + this.name
+  }
 }
 
 export { TestClass };

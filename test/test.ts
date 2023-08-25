@@ -13,7 +13,8 @@ const test2 = new TestClass2();
 const test3 = new TestClass3();
 console.log("Raw: " + test3.name);
 const mttest3 = TestClass3.newEmptyObject();
-// console.log("newEmptyObject: " + mttest3.name);
+mttest3.name = "Carl"
+console.log(`${JSON.stringify(mttest3)}`);
 test3.name = "test";
 test3.email = "test@email";
 console.log("test3: " + test3.name);

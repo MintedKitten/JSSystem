@@ -23,6 +23,10 @@ import { INewEmptyObject } from "./lang/INewEmptyObject";
 import { UnsupportedOperationException } from "./lang/UnsupportedOperationException";
 import { ICloneable } from "./lang/ICloneable";
 import { CloneNotSupportedException } from "./lang/CloneNotSupportedException";
+import { ISerializable } from "./lang/ISerializable";
+import { IDeserializable } from "./lang/IDeserializable";
+import { ObjectSerializableFailedException } from "./lang/ObjectNotSerializableException";
+import { ObjectDeserializableFailedException } from "./lang/ObjectNotDeserializableException";
 
 /**
  * Registering Object in System
@@ -43,10 +47,14 @@ export {
   IllegalArgumentException,
   UnsupportedOperationException,
   CloneNotSupportedException,
+  ObjectSerializableFailedException,
+  ObjectDeserializableFailedException,
 };
 export type {
   Random_Serial_BigInt_Interface,
   INewEmptyObject,
   ICloneable,
   Static_Implements,
+  ISerializable,
+  IDeserializable,
 };

@@ -29,6 +29,8 @@ __export(src_exports, {
   JSSystemGetClass: () => import_System.JSSystemGetClass,
   JSSystemGetClasses: () => import_System.JSSystemGetClasses,
   JSSystemTryBecomeClass: () => import_System.JSSystemTryBecomeClass,
+  ObjectDeserializableFailedException: () => import_ObjectNotDeserializableException.ObjectDeserializableFailedException,
+  ObjectSerializableFailedException: () => import_ObjectNotSerializableException.ObjectSerializableFailedException,
   Random_Serial_BigInt: () => import_System.Random_Serial_BigInt,
   Throwable: () => import_Throwable.Throwable,
   UnsupportedOperationException: () => import_UnsupportedOperationException.UnsupportedOperationException
@@ -44,6 +46,8 @@ var import_JSException = require("./lang/JSException");
 var import_Throwable = require("./lang/Throwable");
 var import_UnsupportedOperationException = require("./lang/UnsupportedOperationException");
 var import_CloneNotSupportedException = require("./lang/CloneNotSupportedException");
+var import_ObjectNotSerializableException = require("./lang/ObjectNotSerializableException");
+var import_ObjectNotDeserializableException = require("./lang/ObjectNotDeserializableException");
 new import_JSObject.JSObject();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
@@ -58,6 +62,8 @@ new import_JSObject.JSObject();
   JSSystemGetClass,
   JSSystemGetClasses,
   JSSystemTryBecomeClass,
+  ObjectDeserializableFailedException,
+  ObjectSerializableFailedException,
   Random_Serial_BigInt,
   Throwable,
   UnsupportedOperationException

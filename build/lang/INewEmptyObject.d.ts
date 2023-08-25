@@ -5,6 +5,7 @@
 interface INewEmptyObject {
     /**
      * Static Implement Compatibility
+     * @see Static_Implements
      */
     new (...args: any[]): any;
     /**

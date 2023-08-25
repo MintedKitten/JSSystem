@@ -14,6 +14,8 @@ import { JSException } from "./lang/JSException.mjs";
 import { Throwable } from "./lang/Throwable.mjs";
 import { UnsupportedOperationException } from "./lang/UnsupportedOperationException.mjs";
 import { CloneNotSupportedException } from "./lang/CloneNotSupportedException.mjs";
+import { ObjectSerializableFailedException } from "./lang/ObjectNotSerializableException.mjs";
+import { ObjectDeserializableFailedException } from "./lang/ObjectNotDeserializableException.mjs";
 new JSObject();
 export {
   ClassNotFoundError,
@@ -27,6 +29,8 @@ export {
   JSSystemGetClass,
   JSSystemGetClasses,
   JSSystemTryBecomeClass,
+  ObjectDeserializableFailedException,
+  ObjectSerializableFailedException,
   Random_Serial_BigInt,
   Throwable,
   UnsupportedOperationException
