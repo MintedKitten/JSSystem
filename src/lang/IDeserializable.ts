@@ -11,8 +11,9 @@ interface IDeserializable {
    */
   new (...args: any[]): any;
   /**
-   * Create a new 'Empty' object of this class. No parameter. Replace return type with class.
-   * @return {ThisType<this>} An 'Empty' object of this class.
+   * Turn a serialized version of this object into an object of this class.
+   * @param json {string} The serailized version of this object.
+   * @return {ThisType<this>} A deserialized object.
    * @throws {ObjectDeserializableFailedException} When an object has the interface IDeserializable but failed to execute when called.
    */
   fromJSON(json: string): ThisType<this>;
