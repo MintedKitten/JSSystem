@@ -12,7 +12,7 @@ interface IDeserializable {
   new (...args: any[]): any;
   /**
    * Turn a serialized version of this object into an object of this class.
-   * @param json {string} The serailized version of this object.
+   * @param json {string} The serialized version of this object.
    * @return {ThisType<this>} A deserialized object.
    * @throws {ObjectDeserializableFailedException} When an object has the interface IDeserializable but failed to execute when called.
    */
