@@ -2,22 +2,14 @@ import {
   IllegalArgumentException,
   JSSystemTryBecomeClass
 } from "../build/index.mjs";
-import { TestClass as TestClass1 } from "./class1/TestClass.mjs";
 import { TestClass as TestClass2 } from "./class2/TestClass.mjs";
-import { TestClass as TestClass3 } from "./class3/TestClass.mjs";
-const test1 = new TestClass1();
-const test2 = new TestClass2();
-const test3 = new TestClass3();
-console.log("Raw: " + test3.name);
-const mttest3 = TestClass3.newEmptyObject();
-mttest3.name = "Carl";
-console.log(`${JSON.stringify(mttest3)}`);
-test3.name = "test";
-test3.email = "test@email";
-console.log("test3: " + test3.name);
-const test4 = test3.clone();
-console.log("test4: " + test4.name);
-console.log("Module:" + process.env.npm_package_version);
+const t2 = new TestClass2();
+t2.name = "Tom";
+const serled = JSON.stringify(t2);
+console.log(serled);
+const parsed = JSON.parse(serled);
+const t2_2 = TestClass2.fromJSON(parsed);
+console.log(t2_2);
 function Afunc1() {
   console.log("before 2");
   Afunc2("thing");
@@ -83,7 +75,7 @@ function Afunc(params) {
 try {
   const num = 5;
   const message = "al";
-  Afunc({ num });
+  Afunc({ message, num });
 } catch (e) {
   const error = JSSystemTryBecomeClass({
     object: e,

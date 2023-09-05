@@ -5,10 +5,10 @@
  */
 interface ISerializable {
     /**
-     * Return a serialized version of this object.
-     * @return {string} A serialized version of this object.
+     * Return a serialized version of this object. Replace return type with the intended type.
+     * @return {ThisType<any>} A serialized version of this object.
      * @throws {ObjectSerializableFailedException} When an object has the interface ISerializable but failed to execute when called.
      */
-    toJSON(): string;
+    toJSON(): ThisType<any>;
 }
 export type { ISerializable };
